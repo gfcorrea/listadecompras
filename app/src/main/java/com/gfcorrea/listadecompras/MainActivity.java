@@ -14,14 +14,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView TextViewNome;
+    //private TextView TextViewNome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextViewNome = findViewById(R.id.TextViewNome);
+        //TextViewNome = findViewById(R.id.TextViewNome);
 
         AppDatabase db = BdConection.getConexao(getApplicationContext());
 
@@ -36,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         List<Lista> listas = listaDao.getAll();
 
-        TextViewNome.setText(listas.get(0).nome);
+        //TextViewNome.setText(listas.get(0).nome);
     }
 }
