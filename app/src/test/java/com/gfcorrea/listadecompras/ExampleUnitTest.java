@@ -1,4 +1,4 @@
-package com.example.testebd;
+package com.gfcorrea.listadecompras;
 
 import org.junit.Test;
 

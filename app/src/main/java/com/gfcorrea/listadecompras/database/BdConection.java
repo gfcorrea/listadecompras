@@ -1,11 +1,9 @@
-package com.example.testebd.repository;
+package com.gfcorrea.listadecompras.database;
 
 import android.app.Application;
 import android.content.Context;
 
 import androidx.room.Room;
-
-import com.example.testebd.dao.UserDao;
 
 public class BdConection extends Application {
 
@@ -13,6 +11,7 @@ public class BdConection extends Application {
     private static AppDatabase instance;
 
     private BdConection() {
+
     }
 
     public static AppDatabase getConexao(Context contexto) {

@@ -1,4 +1,4 @@
-package com.example.testebd;
+package com.gfcorrea.listadecompras;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.testebd", appContext.getPackageName());
+        assertEquals("com.gfcorrea.listadecompras", appContext.getPackageName());
     }
 }
