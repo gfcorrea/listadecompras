@@ -3,13 +3,18 @@ package com.gfcorrea.listadecompras;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 public class NovaListaFragment extends Fragment {
+
+    Button buttonSalvar;
 
     public NovaListaFragment() {
         // Required empty public constructor
@@ -24,6 +29,24 @@ public class NovaListaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nova_lista, container, false);
+        View v = inflater.inflate(R.layout.fragment_nova_lista, container, false);
+        buttonSalvar = v.findViewById(R.id.buttonSalvar);
+        buttonSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SalvarLista();
+            }
+        });
+        return v;
     }
+
+    public void SalvarLista(){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        HomeFragment fragment = new HomeFragment();
+        fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
+        fragmentTransaction.commit();
+    }
+
 }
