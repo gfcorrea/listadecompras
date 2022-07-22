@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/fragment_nova_lista.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/lista_recycler.xml" value="0.365625" />
       </map>
     </option>
   </component>
