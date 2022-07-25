@@ -30,6 +30,7 @@ public class HomeFragment extends Fragment {
 
 
 
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerViewLista =  v.findViewById(R.id.RecyclerViewLista);
 
+
         ListaDao listaDao = BdConection.getConexao(getActivity().getApplicationContext()).listaDao();
 
         List<Lista> listas = listaDao.getAll();
@@ -57,6 +59,8 @@ public class HomeFragment extends Fragment {
 
         RecyclerViewLista.addItemDecoration(
                 new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
+
+
 
         return v;
     }

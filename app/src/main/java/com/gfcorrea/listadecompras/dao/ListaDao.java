@@ -19,6 +19,12 @@ public interface ListaDao {
     @Query("SELECT * FROM lista WHERE id IN (:listaIds)")
     List<Lista> loadAllByIds(int[] listaIds);
 
+    @Query("SELECT * FROM lista WHERE id = :id")
+    Lista findById(int id);
+
+    @Query("DELETE FROM lista WHERE id = :id")
+    void deleteById(int id);
+
     @Query("SELECT * FROM lista WHERE nome LIKE :nome  LIMIT 1")
     Lista findByName(String nome);
 
