@@ -16,7 +16,7 @@ public class BdConection extends Application {
 
     public static AppDatabase getConexao(Context contexto) {
         if (instance == null) {
-            instance = Room.databaseBuilder(contexto, AppDatabase.class, "meubd2.bd").allowMainThreadQueries().build();
+            instance = Room.databaseBuilder(contexto, AppDatabase.class, "meubd3.bd").allowMainThreadQueries().build();
         }
 
         return instance;

@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/buttonExcluirLista"
-            android:layout_width="40dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="X" />

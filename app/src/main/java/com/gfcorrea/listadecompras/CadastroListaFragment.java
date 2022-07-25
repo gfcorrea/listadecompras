@@ -17,7 +17,6 @@ import com.gfcorrea.listadecompras.database.BdConection;
 import com.gfcorrea.listadecompras.entity.Lista;
 import com.google.android.material.textfield.TextInputEditText;
 
-
 public class CadastroListaFragment extends Fragment {
     TextInputEditText nome;
     Button buttonSalvarLista;
