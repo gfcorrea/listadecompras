@@ -23,6 +23,7 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
     private List<Lista> lista = new ArrayList<>();
 
+
     public ListasAdapter(List<Lista> lista) {
         this.lista = lista;
     }
@@ -53,8 +54,10 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListaDao listaDao = BdConection.getConexao(holder.itemView.getContext()).listaDao();
+                ListaDao listaDao = BdConection.getConexao().listaDao();
                 listaDao.deleteById( Integer.parseInt(id));
+
+
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
                 lista.remove(position);
                 notifyItemRemoved(position);

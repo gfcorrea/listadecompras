@@ -48,7 +48,7 @@ public class CadastroListaFragment extends Fragment {
     }
 
     public void SalvarLista() {
-        AppDatabase db = BdConection.getConexao(getActivity().getApplicationContext());
+        AppDatabase db = BdConection.getConexao();
 
         ListaDao listaDao = db.listaDao();
 
