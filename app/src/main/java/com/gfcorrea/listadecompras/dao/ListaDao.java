@@ -1,5 +1,6 @@
 package com.gfcorrea.listadecompras.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface ListaDao {
 
     @Query("SELECT * FROM lista")
-    List<Lista> getAll();
+     List<Lista>  getAll();
 
     @Query("SELECT * FROM lista WHERE id IN (:listaIds)")
     List<Lista> loadAllByIds(int[] listaIds);

@@ -13,7 +13,6 @@ import android.widget.Button;
 
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
-import com.gfcorrea.listadecompras.database.BdConection;
 import com.gfcorrea.listadecompras.entity.Lista;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -48,7 +47,7 @@ public class CadastroListaFragment extends Fragment {
     }
 
     public void SalvarLista() {
-        AppDatabase db = BdConection.getConexao();
+        AppDatabase db = AppDatabase.getInstance();
 
         ListaDao listaDao = db.listaDao();
 

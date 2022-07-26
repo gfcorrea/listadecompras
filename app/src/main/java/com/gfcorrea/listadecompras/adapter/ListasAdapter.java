@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.database.BdConection;
+import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
 
 import java.util.ArrayList;
@@ -22,7 +22,6 @@ import java.util.List;
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
     private List<Lista> lista = new ArrayList<>();
-
 
     public ListasAdapter(List<Lista> lista) {
         this.lista = lista;
@@ -54,7 +53,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListaDao listaDao = BdConection.getConexao().listaDao();
+                //ListaDao listaDao = BdConection.getConexao().listaDao();
+                ListaDao listaDao = AppDatabase.getInstance().listaDao();
                 listaDao.deleteById( Integer.parseInt(id));
 
 

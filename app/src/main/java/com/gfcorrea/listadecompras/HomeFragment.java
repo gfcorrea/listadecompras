@@ -3,8 +3,6 @@ package com.gfcorrea.listadecompras;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,18 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
-import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
-import com.gfcorrea.listadecompras.database.BdConection;
-import com.gfcorrea.listadecompras.entity.Lista;
 import com.gfcorrea.listadecompras.vm.ListaVM;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class HomeFragment extends Fragment {

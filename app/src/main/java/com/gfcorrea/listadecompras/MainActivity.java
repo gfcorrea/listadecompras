@@ -3,14 +3,13 @@ package com.gfcorrea.listadecompras;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.gfcorrea.listadecompras.database.BdConection;
+import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.vm.ListaVM;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BdConection.setContexto(getApplicationContext());
+        AppDatabase.setContexto(getApplicationContext());
 
         ListaVM vmodel = new ViewModelProvider(this).get(ListaVM.class);
         vmodel.teste = "Listagem pelo view model:";
