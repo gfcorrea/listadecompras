@@ -9,12 +9,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gfcorrea.listadecompras.CadastroListaFragment;
+import com.gfcorrea.listadecompras.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
+import com.gfcorrea.listadecompras.vm.ListaSelecionadaVM;
+import com.gfcorrea.listadecompras.vm.ListaVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +31,12 @@ import java.util.List;
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
     private List<Lista> lista = new ArrayList<>();
+    ListaSelecionadaVM listaSelecionadaVM;
 
-    public ListasAdapter(List<Lista> lista) {
+
+    public ListasAdapter(List<Lista> lista, ListaSelecionadaVM listaSelecionadaVM) {
         this.lista = lista;
+        this.listaSelecionadaVM = listaSelecionadaVM;
     }
 
     @NonNull
@@ -70,11 +82,27 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         return lista.size();
     }
 
-    public class ListaViewHolder extends RecyclerView.ViewHolder{
+    public class ListaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ListaViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
         }
+
+        //Implementa View.OnClickListener
+        @Override
+        public void onClick(View v) {
+            listaSelecionadaVM.setId(lista.get( getAdapterPosition()).id);
+            listaSelecionadaVM.setNome(lista.get( getAdapterPosition()).nome);
+
+            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+            ItensFragment fragment = new ItensFragment();
+            fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
+            fragmentTransaction.commit();
+        }
+
     }
 
 }

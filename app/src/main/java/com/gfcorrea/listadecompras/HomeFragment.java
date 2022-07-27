@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
+import com.gfcorrea.listadecompras.vm.ListaSelecionadaVM;
 import com.gfcorrea.listadecompras.vm.ListaVM;
 
 
@@ -38,8 +40,9 @@ public class HomeFragment extends Fragment {
         RecyclerViewLista =  v.findViewById(R.id.RecyclerViewLista);
 
         ListaVM vmodel = new ViewModelProvider(requireActivity()).get(ListaVM.class);
+        ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(requireActivity()).get(ListaSelecionadaVM.class);
 
-        adaptador = new ListasAdapter( vmodel.Listas_getAll() );
+        adaptador = new ListasAdapter( vmodel.Listas_getAll(), listaSelecionadaVM );
 
         RecyclerViewLista.setAdapter(adaptador);
 
