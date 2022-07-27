@@ -1,4 +1,4 @@
-package com.gfcorrea.listadecompras.vm;
+package com.gfcorrea.listadecompras.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 

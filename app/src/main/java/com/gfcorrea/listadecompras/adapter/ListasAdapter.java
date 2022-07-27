@@ -12,18 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gfcorrea.listadecompras.CadastroListaFragment;
-import com.gfcorrea.listadecompras.ItensFragment;
+import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
-import com.gfcorrea.listadecompras.vm.ListaSelecionadaVM;
-import com.gfcorrea.listadecompras.vm.ListaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
 
 import java.util.ArrayList;
 import java.util.List;

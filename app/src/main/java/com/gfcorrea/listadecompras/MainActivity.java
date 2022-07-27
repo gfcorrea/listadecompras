@@ -6,15 +6,12 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.gfcorrea.listadecompras.database.AppDatabase;
-import com.gfcorrea.listadecompras.vm.ListaVM;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gfcorrea.listadecompras.fragments.HomeFragment;
+import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

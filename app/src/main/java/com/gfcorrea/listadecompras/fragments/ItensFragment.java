@@ -1,4 +1,4 @@
-package com.gfcorrea.listadecompras;
+package com.gfcorrea.listadecompras.fragments;
 
 import android.os.Bundle;
 
@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.gfcorrea.listadecompras.vm.ListaSelecionadaVM;
+import com.gfcorrea.listadecompras.R;
+import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
 
 
 public class ItensFragment extends Fragment {

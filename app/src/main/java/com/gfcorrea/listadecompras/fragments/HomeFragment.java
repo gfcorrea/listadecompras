@@ -1,4 +1,4 @@
-package com.gfcorrea.listadecompras;
+package com.gfcorrea.listadecompras.fragments;
 
 import android.os.Bundle;
 
@@ -7,18 +7,17 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
-import com.gfcorrea.listadecompras.vm.ListaSelecionadaVM;
-import com.gfcorrea.listadecompras.vm.ListaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 

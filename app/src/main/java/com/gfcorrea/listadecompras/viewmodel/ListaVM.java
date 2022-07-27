@@ -1,4 +1,4 @@
-package com.gfcorrea.listadecompras.vm;
+package com.gfcorrea.listadecompras.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
@@ -7,8 +7,6 @@ import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class ListaVM extends ViewModel {
 
