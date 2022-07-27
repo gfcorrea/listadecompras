@@ -11,10 +11,10 @@ import android.widget.Button;
 
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.vm.ListaVM;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button buttonAdicionar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +32,6 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment fragment = new HomeFragment();
         fragmentTransaction.add(R.id.fragmentContainerView2, fragment);
         fragmentTransaction.commit();
-
-        buttonAdicionar = findViewById(R.id.buttonAdicionar);
-        buttonAdicionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                CadastroListaFragment fragment = new CadastroListaFragment();
-                fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-                fragmentTransaction.commit();
-            }
-        });
     }
 
 }
