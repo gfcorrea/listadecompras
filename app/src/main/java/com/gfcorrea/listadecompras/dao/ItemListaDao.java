@@ -13,8 +13,8 @@ import java.util.List;
 @Dao
 public interface ItemListaDao {
 
-    @Query("SELECT * FROM item_lista")
-    List<ItemLista> getAll();
+    @Query("SELECT * FROM item_lista where id_lista = :id")
+    List<ItemLista> getAll(int id);
 
     @Query("SELECT * FROM item_lista WHERE id IN (:listaIds)")
     List<ItemLista> loadAllByIds(int[] listaIds);
