@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_live_background_1"
     android:orientation="vertical"
     tools:context=".fragments.HomeFragment">
 
@@ -11,6 +12,7 @@
         android:id="@+id/TextViewTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Listagem:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +22,7 @@
         android:id="@+id/RecyclerViewLista"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:backgroundTint="#80FFFFFF"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/ButtonMainAdd"
         app:layout_constraintTop_toBottomOf="@+id/TextViewTitulo"
@@ -36,4 +39,5 @@
         android:src="@drawable/ic_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
