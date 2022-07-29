@@ -33,6 +33,7 @@ public class ItensFragment extends Fragment {
     private ItensAdapter adapter;
     private FloatingActionButton AddFAB;
 
+
     public ItensFragment() {
         // Required empty public constructor
     }
@@ -52,6 +53,7 @@ public class ItensFragment extends Fragment {
         recyclerViewItens   = v.findViewById(R.id.RecyclerViewItens);
         textViewTituloItens = v.findViewById(R.id.TextViewTituloItens);
         buttonVoltar        = v.findViewById(R.id.buttonVoltarItens);
+
         AddFAB              = v.findViewById(R.id.floatingActionButtonAddItem);
 
         ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(requireActivity()).get(ListaSelecionadaVM.class);

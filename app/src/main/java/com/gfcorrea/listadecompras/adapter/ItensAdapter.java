@@ -1,14 +1,20 @@
 package com.gfcorrea.listadecompras.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.R;
+import com.gfcorrea.listadecompras.dao.ItemListaDao;
+import com.gfcorrea.listadecompras.dao.ListaDao;
+import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.ItemLista;
 
 import java.util.List;
@@ -36,15 +42,31 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItensViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItensViewHolder holder, @SuppressLint("RecyclerView") int position) {
         TextView textViewItemProduto;
         TextView textViewItemQuantidade;
 
         textViewItemProduto = holder.itemView.findViewById(R.id.textViewItemProduto);
         textViewItemQuantidade = holder.itemView.findViewById(R.id.textViewItemQuantidade);
+        Button buttonExcluirItem = holder.itemView.findViewById(R.id.buttonExcluirItem);
 
+        String id    =  String.valueOf(lista.get(position).getId());
         textViewItemProduto.setText( lista.get(position).getProduto());
         textViewItemQuantidade.setText( String.valueOf(lista.get(position).getQuantidade()));
+
+        buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ListaDao listaDao = BdConection.getConexao().listaDao();
+                ItemListaDao itemListaDao = AppDatabase.getInstance().itemListaDao();
+                itemListaDao.deleteById( Integer.parseInt(id));
+
+                Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
+                lista.remove(position);
+                notifyItemRemoved(position);
+            }
+        });
+
     }
 
     public class ItensViewHolder extends RecyclerView.ViewHolder {
