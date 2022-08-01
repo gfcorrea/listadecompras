@@ -22,6 +22,7 @@ import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
 import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,24 +48,23 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
     @Override
     public void onBindViewHolder(@NonNull ListaViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        TextView tID   = holder.itemView.findViewById(R.id.textViewID);
         TextView tNome  = holder.itemView.findViewById(R.id.textViewNome);
         TextView tTotal = holder.itemView.findViewById(R.id.textViewTotal);
         Button buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
+        DecimalFormat precision = new DecimalFormat("0.00");
 
-        String id    =  String.valueOf(lista.get(position).getId());
-        String total =  String.valueOf(lista.get(position).getValor_total());
+        int id       =  lista.get(position).getId();
+        double total =  lista.get(position).getValor_total();
 
-        tID.setText( id );
         tNome.setText(lista.get(position).getNome());
-        tTotal.setText( total );
+        tTotal.setText( "R$ "+ precision.format(total) );
 
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
                 ListaController listaController = new ListaController();
-                listaController.excluirID(Integer.parseInt(id));
+                listaController.excluirID(id);
 
                 lista.remove(position);
                 notifyItemRemoved(position);
