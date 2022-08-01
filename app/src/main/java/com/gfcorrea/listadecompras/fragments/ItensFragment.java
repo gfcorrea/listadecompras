@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ItensAdapter;
+import com.gfcorrea.listadecompras.controller.ItemController;
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.ItemLista;
@@ -58,8 +59,9 @@ public class ItensFragment extends Fragment {
 
         ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(requireActivity()).get(ListaSelecionadaVM.class);
 
-        ItemListaDao itemListaDao = AppDatabase.getInstance().itemListaDao();
-        ItensAdapter itemAdapter = new ItensAdapter(itemListaDao.getAll(listaSelecionadaVM.getId()));
+        ItemController controller = new ItemController();
+
+        ItensAdapter itemAdapter = new ItensAdapter( controller.itensDaListaID(listaSelecionadaVM.getId()));
 
         recyclerViewItens.setAdapter(itemAdapter);
         textViewTituloItens.setText("Lista: " + listaSelecionadaVM.getNome());

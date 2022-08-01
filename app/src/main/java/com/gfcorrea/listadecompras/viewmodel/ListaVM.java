@@ -2,6 +2,7 @@ package com.gfcorrea.listadecompras.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
+import com.gfcorrea.listadecompras.controller.ListaController;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
@@ -17,9 +18,11 @@ public class ListaVM extends ViewModel {
     }
 
     public List<Lista> Listas_getAll(){
-        ListaDao listaDao = AppDatabase.getInstance().listaDao();
+        //ListaDao listaDao = AppDatabase.getInstance().listaDao();
+        //this.listas = listaDao.getAll();
 
-        this.listas = listaDao.getAll();
+        ListaController controller = new ListaController();
+        this.listas = controller.getAll();
 
         return listas;
     }

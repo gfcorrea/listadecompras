@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gfcorrea.listadecompras.controller.ListaController;
 import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.dao.ListaDao;
@@ -61,14 +62,12 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ListaDao listaDao = BdConection.getConexao().listaDao();
-                ListaDao listaDao = AppDatabase.getInstance().listaDao();
-                listaDao.deleteById( Integer.parseInt(id));
+                ListaController controller = new ListaController();
+                controller.excluirID(Integer.parseInt(id));
 
-
-                Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
                 lista.remove(position);
                 notifyItemRemoved(position);
+                Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
         });
     }

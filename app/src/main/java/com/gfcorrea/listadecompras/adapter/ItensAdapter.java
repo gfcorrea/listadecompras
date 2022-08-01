@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.R;
+import com.gfcorrea.listadecompras.controller.ItemController;
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
@@ -57,13 +58,12 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ListaDao listaDao = BdConection.getConexao().listaDao();
-                ItemListaDao itemListaDao = AppDatabase.getInstance().itemListaDao();
-                itemListaDao.deleteById( Integer.parseInt(id));
+                ItemController controller = new ItemController();
+                controller.apagarID(Integer.parseInt(id));
 
-                Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
                 lista.remove(position);
                 notifyItemRemoved(position);
+                Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
         });
 

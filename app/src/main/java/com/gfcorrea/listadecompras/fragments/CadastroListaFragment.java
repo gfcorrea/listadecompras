@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.gfcorrea.listadecompras.R;
+import com.gfcorrea.listadecompras.controller.ListaController;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
@@ -19,7 +20,7 @@ import com.gfcorrea.listadecompras.fragments.HomeFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CadastroListaFragment extends Fragment {
-    TextInputEditText nome;
+    TextInputEditText textInputNome;
     Button buttonSalvarLista;
 
     public CadastroListaFragment() {
@@ -36,7 +37,7 @@ public class CadastroListaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cadastro_lista, container, false);
-        nome = v.findViewById(R.id.TextInputNome);
+        textInputNome = v.findViewById(R.id.TextInputNome);
         buttonSalvarLista = v.findViewById(R.id.buttonSalvarLista);
         buttonSalvarLista.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,14 +50,12 @@ public class CadastroListaFragment extends Fragment {
     }
 
     public void SalvarLista() {
-        AppDatabase db = AppDatabase.getInstance();
-
-        ListaDao listaDao = db.listaDao();
 
         Lista lista = new Lista();
-        lista.nome = nome.getText().toString();
+        lista.nome = textInputNome.getText().toString();
 
-        listaDao.insertAll(lista);
+        ListaController controller = new ListaController();
+        controller.inserir(lista);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

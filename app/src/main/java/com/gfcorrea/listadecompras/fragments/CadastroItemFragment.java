@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.gfcorrea.listadecompras.R;
+import com.gfcorrea.listadecompras.controller.ItemController;
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
@@ -54,16 +55,13 @@ public class CadastroItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                AppDatabase db = AppDatabase.getInstance();
-
-                ItemListaDao itemListaDao = db.itemListaDao();
-
                 ItemLista item = new ItemLista();
                 item.setProduto( produto.getText().toString() );
                 item.setQuantidade( Double.parseDouble(quantidade.getText().toString()) );
                 item.setId_lista( listaSelecionadaVM.getId() );
 
-                itemListaDao.insertAll(item);
+                ItemController controller = new ItemController();
+                controller.inserir(item);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
