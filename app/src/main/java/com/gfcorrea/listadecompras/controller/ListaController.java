@@ -22,7 +22,11 @@ public class ListaController {
     }
 
     public void excluirID(int id){
+        ItemController itemController = new ItemController();
+        itemController.apagarTodosItensDaLista(id);
+
         ListaDao listaDao = AppDatabase.getInstance().listaDao();
         listaDao.deleteById( id);
     }
+
 }

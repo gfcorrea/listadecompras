@@ -25,4 +25,10 @@ public class ItemController {
         itemListaDao.deleteById(id);
     }
 
+    public void apagarTodosItensDaLista(int id){
+        AppDatabase db = AppDatabase.getInstance();
+        ItemListaDao itemListaDao = db.itemListaDao();
+        itemListaDao.deleteAllByListID(id);
+    }
+
 }

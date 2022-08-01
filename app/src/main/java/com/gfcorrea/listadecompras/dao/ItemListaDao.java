@@ -28,6 +28,9 @@ public interface ItemListaDao {
     @Query("SELECT * FROM item_lista WHERE produto LIKE :nome  LIMIT 1")
     ItemLista findByName(String nome);
 
+    @Query("DELETE FROM item_lista where id_lista = :id")
+    void deleteAllByListID(int id);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(ItemLista... listas);
 

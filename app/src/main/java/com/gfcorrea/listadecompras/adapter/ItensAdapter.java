@@ -58,11 +58,13 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ItemController controller = new ItemController();
-                controller.apagarID(Integer.parseInt(id));
+                ItemController itemController = new ItemController();
+                itemController.apagarID(Integer.parseInt(id));
 
                 lista.remove(position);
                 notifyItemRemoved(position);
+                notifyDataSetChanged();
+
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
         });

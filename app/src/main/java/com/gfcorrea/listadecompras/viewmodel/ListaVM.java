@@ -18,11 +18,8 @@ public class ListaVM extends ViewModel {
     }
 
     public List<Lista> Listas_getAll(){
-        //ListaDao listaDao = AppDatabase.getInstance().listaDao();
-        //this.listas = listaDao.getAll();
-
-        ListaController controller = new ListaController();
-        this.listas = controller.getAll();
+        ListaController listaController = new ListaController();
+        this.listas = listaController.getAll();
 
         return listas;
     }

@@ -27,7 +27,7 @@ import java.util.List;
 
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
-    private List<Lista> lista = new ArrayList<>();
+    private List<Lista> lista;
     ListaSelecionadaVM listaSelecionadaVM;
 
 
@@ -60,13 +60,15 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         tTotal.setText( total );
 
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-                ListaController controller = new ListaController();
-                controller.excluirID(Integer.parseInt(id));
+                ListaController listaController = new ListaController();
+                listaController.excluirID(Integer.parseInt(id));
 
                 lista.remove(position);
                 notifyItemRemoved(position);
+                notifyDataSetChanged();
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
         });
