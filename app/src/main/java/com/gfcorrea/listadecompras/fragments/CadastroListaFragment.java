@@ -52,7 +52,7 @@ public class CadastroListaFragment extends Fragment {
     public void SalvarLista() {
 
         Lista lista = new Lista();
-        lista.nome = textInputNome.getText().toString();
+        lista.setNome(textInputNome.getText().toString());
 
         ListaController controller = new ListaController();
         controller.inserir(lista);

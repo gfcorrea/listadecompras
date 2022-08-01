@@ -18,6 +18,8 @@ public class ListaController {
         AppDatabase db = AppDatabase.getInstance();
         ListaDao listaDao = db.listaDao();
 
+        lista.setValor_total(0.0);
+
         listaDao.insertAll(lista);
     }
 
@@ -27,6 +29,11 @@ public class ListaController {
 
         ListaDao listaDao = AppDatabase.getInstance().listaDao();
         listaDao.deleteById( id);
+    }
+
+    public void atualizarValor(int id, double val){
+        ListaDao listaDao = AppDatabase.getInstance().listaDao();
+        listaDao.atualizarValor(id, val);
     }
 
 }

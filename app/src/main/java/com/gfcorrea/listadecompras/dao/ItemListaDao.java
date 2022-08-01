@@ -20,10 +20,10 @@ public interface ItemListaDao {
     List<ItemLista> loadAllByIds(int[] listaIds);
 
     @Query("SELECT * FROM item_lista WHERE id = :id")
-    ItemLista findById(int id);
+    ItemLista findById(long id);
 
     @Query("DELETE FROM item_lista WHERE id = :id")
-    void deleteById(int id);
+    void deleteById(long id);
 
     @Query("SELECT * FROM item_lista WHERE produto LIKE :nome  LIMIT 1")
     ItemLista findByName(String nome);

@@ -25,8 +25,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 
 public class CadastroItemFragment extends Fragment {
-    TextInputEditText produto;
-    TextInputEditText quantidade;
+    TextInputEditText produto, quantidade, preco;
 
     Button buttonSalvarItem;
 
@@ -48,6 +47,7 @@ public class CadastroItemFragment extends Fragment {
         buttonSalvarItem = v.findViewById(R.id.buttonSalvarItem);
         produto    = v.findViewById(R.id.EditProduto);
         quantidade = v.findViewById(R.id.EditQuantidade);
+        preco  = v.findViewById(R.id.EditPreco);
 
         ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(getActivity()).get(ListaSelecionadaVM.class);
 
@@ -58,6 +58,7 @@ public class CadastroItemFragment extends Fragment {
                 ItemLista item = new ItemLista();
                 item.setProduto( produto.getText().toString() );
                 item.setQuantidade( Double.parseDouble(quantidade.getText().toString()) );
+                item.setPreco( Double.parseDouble(preco.getText().toString()) );
                 item.setId_lista( listaSelecionadaVM.getId() );
 
                 ItemController controller = new ItemController();

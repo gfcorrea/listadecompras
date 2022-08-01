@@ -52,11 +52,11 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         TextView tTotal = holder.itemView.findViewById(R.id.textViewTotal);
         Button buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
 
-        String id    =  String.valueOf(lista.get(position).id);
-        String total =  String.valueOf(lista.get(position).valor_total);
+        String id    =  String.valueOf(lista.get(position).getId());
+        String total =  String.valueOf(lista.get(position).getValor_total());
 
         tID.setText( id );
-        tNome.setText(lista.get(position).nome);
+        tNome.setText(lista.get(position).getNome());
         tTotal.setText( total );
 
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +89,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         //Implementa View.OnClickListener
         @Override
         public void onClick(View v) {
-            listaSelecionadaVM.setId(lista.get( getAdapterPosition()).id);
-            listaSelecionadaVM.setNome(lista.get( getAdapterPosition()).nome);
+            listaSelecionadaVM.setId(lista.get( getAdapterPosition()).getId());
+            listaSelecionadaVM.setNome(lista.get( getAdapterPosition()).getNome());
 
             FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

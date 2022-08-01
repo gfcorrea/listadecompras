@@ -1,6 +1,5 @@
 package com.gfcorrea.listadecompras.dao;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -28,6 +27,10 @@ public interface ListaDao {
 
     @Query("SELECT * FROM lista WHERE nome LIKE :nome  LIMIT 1")
     Lista findByName(String nome);
+
+    @Query("UPDATE lista SET valor = valor + :val WHERE id = :id")
+    void atualizarValor(int id, double val);
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Lista... listas);

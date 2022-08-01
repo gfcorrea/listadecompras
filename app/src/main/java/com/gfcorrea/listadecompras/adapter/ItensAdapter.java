@@ -58,6 +58,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 ItemController itemController = new ItemController();
                 itemController.apagarID(Integer.parseInt(id));
 
