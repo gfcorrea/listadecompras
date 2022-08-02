@@ -4,10 +4,12 @@
 <img src="https://user-images.githubusercontent.com/99930836/182445031-a76afa51-9075-4095-a0d6-297c3c2b0923.PNG"/>
 <img src="https://user-images.githubusercontent.com/99930836/182445013-e7acc2d8-2fa0-441e-903f-a7352face636.PNG"/>
 </p>
-<h2>Descrição do Projeto</h2>
+
+## :memo: Descrição do Projeto
 Este é um projeto simples, feito durante meu aprendizado de Android Studio.<br>
 Com este App voce poderá criar suas listas de compras e enquanto vai ao mercado pode ir marcando o que você já comprou.<br>
 A ideia é bastante simples mas é um app que abrange bastante do básico do desenvolvimento em Android.<br>
+
 
 
 ## :hammer: Funcionalidades do projeto
