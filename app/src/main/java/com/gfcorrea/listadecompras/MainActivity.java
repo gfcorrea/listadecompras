@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
+import com.gfcorrea.listadecompras.controller.ListaController;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.fragments.HomeFragment;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         AppDatabase.setContexto(getApplicationContext());
 
         ListaVM vmodel = new ViewModelProvider(this).get(ListaVM.class);
-        vmodel.teste = "Listagem pelo view model:";
+        vmodel.atualizaTotal();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

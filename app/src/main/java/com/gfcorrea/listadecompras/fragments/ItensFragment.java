@@ -17,14 +17,12 @@ import android.widget.TextView;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ItensAdapter;
 import com.gfcorrea.listadecompras.controller.ItemController;
-import com.gfcorrea.listadecompras.dao.ItemListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
-import com.gfcorrea.listadecompras.entity.ItemLista;
-import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
+
+import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DecimalFormat;
+
 
 
 public class ItensFragment extends Fragment {
@@ -57,18 +55,25 @@ public class ItensFragment extends Fragment {
 
         AddFAB              = v.findViewById(R.id.floatingActionButtonAddItem);
 
-        ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(requireActivity()).get(ListaSelecionadaVM.class);
+        ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
 
         ItemController controller = new ItemController();
 
-        ItensAdapter itemAdapter = new ItensAdapter( controller.itensDaListaID(listaSelecionadaVM.getId()));
+        ItensAdapter itemAdapter = new ItensAdapter( controller.itensDaListaID(listaVM.getId()));
 
         recyclerViewItens.setAdapter(itemAdapter);
-        textViewTituloItens.setText("Lista: " + listaSelecionadaVM.getNome());
+        textViewTituloItens.setText("Lista: " + listaVM.getNome());
+
 
         buttonVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                DecimalFormat precision = new DecimalFormat("0.00");
+
+                ListaVM listaVM = new ViewModelProvider(getActivity()).get(ListaVM.class);
+                listaVM.atualizaTotal();
+
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

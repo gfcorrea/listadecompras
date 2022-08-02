@@ -13,10 +13,7 @@ import android.widget.Button;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.controller.ListaController;
-import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
-import com.gfcorrea.listadecompras.fragments.HomeFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CadastroListaFragment extends Fragment {

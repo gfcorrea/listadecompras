@@ -36,4 +36,9 @@ public class ListaController {
         listaDao.atualizarValor(id, val);
     }
 
+    public double pegaValorTotal(){
+        ListaDao listaDao = AppDatabase.getInstance().listaDao();
+        return listaDao.pegaValorTotal();
+    }
+
 }

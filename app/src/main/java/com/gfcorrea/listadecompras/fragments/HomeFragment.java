@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
-import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.DecimalFormat;
 
 
 public class HomeFragment extends Fragment {
@@ -26,6 +28,7 @@ public class HomeFragment extends Fragment {
    RecyclerView RecyclerViewLista;
    ListasAdapter adaptador;
    FloatingActionButton buttonAdicionar;
+   TextView valorTotal;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -39,15 +42,18 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        DecimalFormat precision = new DecimalFormat("0.00");
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerViewLista =  v.findViewById(R.id.RecyclerViewLista);
+        valorTotal        =  v.findViewById(R.id.textViewTotalGeral);
 
-        ListaVM vmodel = new ViewModelProvider(requireActivity()).get(ListaVM.class);
-        ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(requireActivity()).get(ListaSelecionadaVM.class);
+        ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
 
-        adaptador = new ListasAdapter( vmodel.Listas_getAll(), listaSelecionadaVM );
+        valorTotal.setText( "R$ " + precision.format(listaVM.getValorTotal())  );
+
+        adaptador = new ListasAdapter( listaVM );
 
         RecyclerViewLista.setAdapter(adaptador);
 

@@ -17,24 +17,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gfcorrea.listadecompras.controller.ListaController;
 import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
-import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
-import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
     private List<Lista> lista;
-    ListaSelecionadaVM listaSelecionadaVM;
+    ListaVM listaVM;
 
-
-    public ListasAdapter(List<Lista> lista, ListaSelecionadaVM listaSelecionadaVM) {
-        this.lista = lista;
-        this.listaSelecionadaVM = listaSelecionadaVM;
+    public ListasAdapter( ListaVM listaVM ) {
+        this.lista = listaVM.Listas_getAll();
+        this.listaVM = listaVM;
     }
 
     @NonNull
@@ -69,6 +65,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
                 lista.remove(position);
                 notifyItemRemoved(position);
                 notifyDataSetChanged();
+
+                listaVM.atualizaTotal();
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
         });
@@ -89,8 +87,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         //Implementa View.OnClickListener
         @Override
         public void onClick(View v) {
-            listaSelecionadaVM.setId(lista.get( getAdapterPosition()).getId());
-            listaSelecionadaVM.setNome(lista.get( getAdapterPosition()).getNome());
+            listaVM.setId(lista.get( getAdapterPosition()).getId());
+            listaVM.setNome(lista.get( getAdapterPosition()).getNome());
 
             FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

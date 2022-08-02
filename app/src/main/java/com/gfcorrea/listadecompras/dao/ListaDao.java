@@ -31,6 +31,9 @@ public interface ListaDao {
     @Query("UPDATE lista SET valor = valor + :val WHERE id = :id")
     void atualizarValor(int id, double val);
 
+    @Query("SELECT sum(valor) from lista")
+    double pegaValorTotal();
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Lista... listas);

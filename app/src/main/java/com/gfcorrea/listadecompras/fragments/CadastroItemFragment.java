@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModel;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -15,12 +15,8 @@ import android.widget.Button;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.controller.ItemController;
-import com.gfcorrea.listadecompras.dao.ItemListaDao;
-import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.ItemLista;
-import com.gfcorrea.listadecompras.entity.Lista;
-import com.gfcorrea.listadecompras.viewmodel.ListaSelecionadaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 import com.google.android.material.textfield.TextInputEditText;
 
 
@@ -49,7 +45,8 @@ public class CadastroItemFragment extends Fragment {
         quantidade = v.findViewById(R.id.EditQuantidade);
         preco  = v.findViewById(R.id.EditPreco);
 
-        ListaSelecionadaVM listaSelecionadaVM = new ViewModelProvider(getActivity()).get(ListaSelecionadaVM.class);
+        ListaVM listaVM = new ViewModelProvider(getActivity()).get(ListaVM.class);
+
 
         buttonSalvarItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +56,7 @@ public class CadastroItemFragment extends Fragment {
                 item.setProduto( produto.getText().toString() );
                 item.setQuantidade( Double.parseDouble(quantidade.getText().toString()) );
                 item.setPreco( Double.parseDouble(preco.getText().toString()) );
-                item.setId_lista( listaSelecionadaVM.getId() );
+                item.setId_lista( listaVM.getId() );
 
                 ItemController controller = new ItemController();
                 controller.inserir(item);
