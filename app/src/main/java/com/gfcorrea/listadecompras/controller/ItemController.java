@@ -40,4 +40,10 @@ public class ItemController {
         itemListaDao.deleteAllByListID(id);
     }
 
+    public void atualizarMarcacao(long id, boolean marcado){
+        AppDatabase db = AppDatabase.getInstance();
+        ItemListaDao itemListaDao = db.itemListaDao();
+        itemListaDao.atualizaMarcacao(id, marcado);
+    }
+
 }

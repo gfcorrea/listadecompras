@@ -14,6 +14,7 @@ public class ItemLista {
     private double quantidade;
     private double preco;
     private double valor_total;
+    private boolean marcado;
 
     public ItemLista() {
     }
@@ -72,5 +73,13 @@ public class ItemLista {
 
     public void setValor_total(double valor_total) {
         this.valor_total = valor_total;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 }

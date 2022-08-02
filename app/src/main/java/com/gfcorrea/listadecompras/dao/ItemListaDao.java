@@ -34,6 +34,9 @@ public interface ItemListaDao {
     @Query("SELECT sum(valor_total) from item_lista where id_lista = :id")
     double pegaTotalLista(int id);
 
+    @Query("UPDATE item_lista SET marcado = :marcado where id = :id")
+    void atualizaMarcacao(long id, boolean marcado);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(ItemLista... listas);
 

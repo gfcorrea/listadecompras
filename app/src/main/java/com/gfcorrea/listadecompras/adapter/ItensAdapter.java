@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,12 +47,14 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
     @Override
     public void onBindViewHolder(@NonNull ItensViewHolder holder, @SuppressLint("RecyclerView") int position) {
         TextView textViewItemProduto, textViewItemQuantidade, textViewItemValor, textViewItemTotal;
+        CheckBox checkBoxMarcado;
         DecimalFormat precision = new DecimalFormat("0.00");
 
         textViewItemProduto = holder.itemView.findViewById(R.id.textViewItemProduto);
         textViewItemQuantidade = holder.itemView.findViewById(R.id.textViewItemQuantidade);
         textViewItemValor = holder.itemView.findViewById(R.id.textViewItemValor);
         textViewItemTotal = holder.itemView.findViewById(R.id.textViewItemTotal);
+        checkBoxMarcado = holder.itemView.findViewById(R.id.checkBoxMarcado);
 
         Button buttonExcluirItem = holder.itemView.findViewById(R.id.buttonExcluirItem);
 
@@ -61,6 +64,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         textViewItemQuantidade.setText( "Qtd: " + String.valueOf(lista.get(position).getQuantidade()));
         textViewItemValor.setText( "Vlr: R$ " + precision.format( lista.get(position).getPreco() )  );
         textViewItemTotal.setText( "Total: R$ " + precision.format( lista.get(position).getValor_total() )  );
+        checkBoxMarcado.setChecked(lista.get(position).isMarcado());
 
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +79,13 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
                 itemVM.atualizaTotal();
 
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
+            }
+        });
+        checkBoxMarcado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemController itemController = new ItemController();
+                itemController.atualizarMarcacao(lista.get(position).getId(), checkBoxMarcado.isChecked());
             }
         });
 
