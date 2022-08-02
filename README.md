@@ -1,9 +1,10 @@
 <h1 align="center"> Lista de Compras </h1>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/99930836/182441299-87df9b36-83fa-4a55-9adc-bbbf1b47ac3b.PNG"/>
-<img src="https://user-images.githubusercontent.com/99930836/182445031-a76afa51-9075-4095-a0d6-297c3c2b0923.PNG"/>
-<img src="https://user-images.githubusercontent.com/99930836/182445013-e7acc2d8-2fa0-441e-903f-a7352face636.PNG"/>
+<img src="https://user-images.githubusercontent.com/99930836/182484747-e58186bb-b506-46f9-994c-6fa44820e24c.PNG"/>
+<img src="https://user-images.githubusercontent.com/99930836/182484755-bcc065e1-d5b3-45ca-91be-95b59723988c.PNG"/>
+<img src="https://user-images.githubusercontent.com/99930836/182484762-7b9b9817-dc05-4c06-b162-778a17084622.PNG"/>
 </p>
+
 
 ## :memo: Descrição do Projeto
 Este é um projeto simples, feito durante meu aprendizado de Android Studio.<br>
