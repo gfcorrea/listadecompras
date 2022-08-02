@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CadastroListaFragment extends Fragment {
     TextInputEditText textInputNome;
-    Button buttonSalvarLista;
+    Button buttonSalvarLista, buttonCancelarLista;
 
     public CadastroListaFragment() {
         // Required empty public constructor
@@ -36,6 +36,8 @@ public class CadastroListaFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_cadastro_lista, container, false);
         textInputNome = v.findViewById(R.id.TextInputNome);
         buttonSalvarLista = v.findViewById(R.id.buttonSalvarLista);
+        buttonCancelarLista = v.findViewById(R.id.buttonCancelarLista);
+
         buttonSalvarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,17 +45,27 @@ public class CadastroListaFragment extends Fragment {
             }
         });
 
+        buttonCancelarLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                voltarHome();
+            }
+        });
+
         return v;
     }
 
     public void SalvarLista() {
-
         Lista lista = new Lista();
         lista.setNome(textInputNome.getText().toString());
 
         ListaController controller = new ListaController();
         controller.inserir(lista);
 
+        voltarHome();
+    }
+
+    public void voltarHome(){
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

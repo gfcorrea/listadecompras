@@ -9,14 +9,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="48dp">
 
         <TextView
             android:id="@+id/textViewItemProduto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:text="TextView"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonExcluirItem"
@@ -34,27 +35,26 @@
             android:textSize="10sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewItemTotal" />
+            app:layout_constraintEnd_toStartOf="@+id/textViewItemTotal"
+            app:layout_constraintStart_toEndOf="@+id/textViewItemQuantidade" />
 
         <TextView
             android:id="@+id/textViewItemQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginBottom="4dp"
             android:minWidth="50dp"
             android:text="TextView"
             android:textSize="10sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewItemValor" />
+            app:layout_constraintStart_toEndOf="@+id/checkBoxMarcado" />
 
         <Button
             android:id="@+id/buttonExcluirItem"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:background="@drawable/ic_delete_24"
             android:contentDescription="Excluir item"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,8 +77,6 @@
             android:id="@+id/checkBoxMarcado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

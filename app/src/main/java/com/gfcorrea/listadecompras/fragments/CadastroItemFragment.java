@@ -23,7 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class CadastroItemFragment extends Fragment {
     TextInputEditText produto, quantidade, preco;
 
-    Button buttonSalvarItem;
+    Button buttonSalvarItem, buttonCancelarItem;
 
     public CadastroItemFragment() {
         // Required empty public constructor
@@ -41,6 +41,7 @@ public class CadastroItemFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_cadastro_item, container, false);
 
         buttonSalvarItem = v.findViewById(R.id.buttonSalvarItem);
+        buttonCancelarItem = v.findViewById(R.id.buttonCancelarItem);
         produto    = v.findViewById(R.id.EditProduto);
         quantidade = v.findViewById(R.id.EditQuantidade);
         preco  = v.findViewById(R.id.EditPreco);
@@ -61,14 +62,26 @@ public class CadastroItemFragment extends Fragment {
                 ItemController controller = new ItemController();
                 controller.inserir(item);
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                ItensFragment fragment = new ItensFragment();
-                fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-                fragmentTransaction.commit();
+                voltarItens();
             }
         });
+
+        buttonCancelarItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                voltarItens();
+            }
+        });
+
         return v;
+    }
+
+    public void voltarItens(){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        ItensFragment fragment = new ItensFragment();
+        fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
+        fragmentTransaction.commit();
     }
 }
