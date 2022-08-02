@@ -17,3 +17,13 @@ A ideia é bastante simples mas é um app que abrange bastante do básico do des
 - Criar Listas Personalizadas: Você pode crias quantas listas quiser com quantos produtos precisar.
 - Totalizar a Lista: Enquanto adiciona os produtos o App irá apresentar o valor total do pedido.
 - Marcar os produtos já adquiridos: Marque os produtos que você já colocou em seu carrinho.
+
+## :camera: ScreenShots
+
+<p align="center">
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182483727-10cdcc70-0db0-415a-a2d4-86ad4d040ee4.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182483742-803e3af1-0f1e-446e-b09d-a04fa071f47f.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182483747-478de5a8-6e1f-49d2-a499-23bbccea03ef.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182483753-4bc25e2c-9ef8-47b8-96e6-dd5b2c2ff87f.PNG"/>
+</p>
+
