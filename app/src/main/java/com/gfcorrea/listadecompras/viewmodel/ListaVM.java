@@ -1,5 +1,6 @@
 package com.gfcorrea.listadecompras.viewmodel;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.gfcorrea.listadecompras.controller.ListaController;
@@ -7,14 +8,25 @@ import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.Lista;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ListaVM extends ViewModel {
 
+    DecimalFormat precision = new DecimalFormat("0.00");
     List<Lista> listas;
     private int id;
     private String nome;
     private double valorTotal;
+
+    private MutableLiveData<String> valorTotalf;
+
+    public MutableLiveData<String> getvalorTotalf() {
+        if (valorTotalf == null) {
+            valorTotalf = new MutableLiveData<String>();
+        }
+        return valorTotalf;
+    }
 
     public int getId() {
         return id;
@@ -58,7 +70,9 @@ public class ListaVM extends ViewModel {
 
     public void atualizaTotal(){
         ListaDao listaDao = AppDatabase.getInstance().listaDao();
-        valorTotal = listaDao.pegaValorTotal();
+        setValorTotal(listaDao.pegaValorTotal());
+
+        getvalorTotalf().setValue("R$ " + precision.format(getValorTotal()));
     }
 
 }

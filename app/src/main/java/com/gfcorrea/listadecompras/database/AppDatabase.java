@@ -19,7 +19,7 @@ import com.gfcorrea.listadecompras.entity.Lista;
 
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "meubd3.bd";
+    private static final String DATABASE_NAME = "listadecompras.bd";
     private static AppDatabase instance;
     private static Context contexto;
 
@@ -28,7 +28,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static synchronized AppDatabase getInstance(){
         if(instance == null){
-            instance = Room.databaseBuilder(contexto, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
+            instance = Room.databaseBuilder(contexto, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().fallbackToDestructiveMigration().build();
         }
         return instance;
     }

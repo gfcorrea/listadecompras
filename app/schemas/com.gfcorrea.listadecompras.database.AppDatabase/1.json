@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ea51b00a7c1479cdfc36e1f79e36b31f",
+    "identityHash": "9baaf55486498b3892dcebe6ad88a086",
     "entities": [
       {
         "tableName": "lista",
@@ -44,7 +44,7 @@
       },
       {
         "tableName": "item_lista",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_lista` INTEGER NOT NULL, `produto` TEXT, `codigo_barra` TEXT, `quantidade` REAL NOT NULL, `preco` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_lista` INTEGER NOT NULL, `produto` TEXT, `codigo_barra` TEXT, `quantidade` REAL NOT NULL, `preco` REAL NOT NULL, `valor_total` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -81,6 +81,12 @@
             "columnName": "preco",
             "affinity": "REAL",
             "notNull": true
+          },
+          {
+            "fieldPath": "valor_total",
+            "columnName": "valor_total",
+            "affinity": "REAL",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -96,7 +102,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ea51b00a7c1479cdfc36e1f79e36b31f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9baaf55486498b3892dcebe6ad88a086')"
     ]
   }
 }

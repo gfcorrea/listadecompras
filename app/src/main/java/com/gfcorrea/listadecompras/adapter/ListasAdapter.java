@@ -26,7 +26,7 @@ import java.util.List;
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
     private List<Lista> lista;
-    ListaVM listaVM;
+    private ListaVM listaVM;
 
     public ListasAdapter( ListaVM listaVM ) {
         this.lista = listaVM.Listas_getAll();

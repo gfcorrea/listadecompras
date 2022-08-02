@@ -1,12 +1,8 @@
 package com.gfcorrea.listadecompras.controller;
 
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.ItemLista;
-import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 
 import java.util.List;
 
@@ -23,7 +19,7 @@ public class ItemController {
         itemListaDao.insertAll(item);
 
         ListaController listaController = new ListaController();
-        listaController.atualizarValor(item.getId_lista(), item.getPreco());
+        listaController.atualizarValor(item.getId_lista(), item.getValor_total());
     }
 
     public void apagarID(long id){
@@ -33,7 +29,7 @@ public class ItemController {
         ItemLista item = itemListaDao.findById(id);
 
         ListaController listaController = new ListaController();
-        listaController.atualizarValor(item.getId_lista(), item.getPreco() *-1 );
+        listaController.atualizarValor(item.getId_lista(), item.getValor_total() *-1 );
 
         itemListaDao.deleteById(id);
     }

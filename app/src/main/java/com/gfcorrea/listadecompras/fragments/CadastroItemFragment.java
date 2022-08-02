@@ -47,7 +47,6 @@ public class CadastroItemFragment extends Fragment {
 
         ListaVM listaVM = new ViewModelProvider(getActivity()).get(ListaVM.class);
 
-
         buttonSalvarItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +55,7 @@ public class CadastroItemFragment extends Fragment {
                 item.setProduto( produto.getText().toString() );
                 item.setQuantidade( Double.parseDouble(quantidade.getText().toString()) );
                 item.setPreco( Double.parseDouble(preco.getText().toString()) );
+                item.setValor_total( item.getPreco() * item.getQuantidade() );
                 item.setId_lista( listaVM.getId() );
 
                 ItemController controller = new ItemController();

@@ -2,10 +2,12 @@ package com.gfcorrea.listadecompras.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,8 +21,6 @@ import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.DecimalFormat;
 
 
 public class HomeFragment extends Fragment {
@@ -42,8 +42,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        DecimalFormat precision = new DecimalFormat("0.00");
-
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerViewLista =  v.findViewById(R.id.RecyclerViewLista);
@@ -51,7 +49,14 @@ public class HomeFragment extends Fragment {
 
         ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
 
-        valorTotal.setText( "R$ " + precision.format(listaVM.getValorTotal())  );
+        final Observer<String> valorObserver = new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable final String valor) {
+                valorTotal.setText(valor);
+            }
+        };
+
+        listaVM.getvalorTotalf().observe(getActivity(), valorObserver);
 
         adaptador = new ListasAdapter( listaVM );
 

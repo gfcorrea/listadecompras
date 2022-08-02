@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,15 +19,13 @@ import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ItensAdapter;
 import com.gfcorrea.listadecompras.controller.ItemController;
 
+import com.gfcorrea.listadecompras.viewmodel.ItemVM;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.DecimalFormat;
-
-
 
 public class ItensFragment extends Fragment {
-    private TextView textViewTituloItens;
+    private TextView textViewTituloItens, textViewTotalItens;
     private Button buttonVoltar;
     private RecyclerView recyclerViewItens;
     private ItensAdapter adapter;
@@ -51,15 +50,28 @@ public class ItensFragment extends Fragment {
 
         recyclerViewItens   = v.findViewById(R.id.RecyclerViewItens);
         textViewTituloItens = v.findViewById(R.id.TextViewTituloItens);
+        textViewTotalItens  = v.findViewById(R.id.textViewTotalItens);
         buttonVoltar        = v.findViewById(R.id.buttonVoltarItens);
 
         AddFAB              = v.findViewById(R.id.floatingActionButtonAddItem);
 
         ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
+        ItemVM itemVM = new ViewModelProvider(requireActivity()).get(ItemVM.class);
+
+        final Observer<String> itemObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                textViewTotalItens.setText(s);
+            }
+        } ;
+
+        itemVM.getTotalGeral().observe(getActivity(), itemObserver);
+        itemVM.setId_lista(listaVM.getId());
+        itemVM.atualizaTotal();
 
         ItemController controller = new ItemController();
 
-        ItensAdapter itemAdapter = new ItensAdapter( controller.itensDaListaID(listaVM.getId()));
+        ItensAdapter itemAdapter = new ItensAdapter( controller.itensDaListaID(listaVM.getId()), itemVM);
 
         recyclerViewItens.setAdapter(itemAdapter);
         textViewTituloItens.setText("Lista: " + listaVM.getNome());
@@ -69,9 +81,6 @@ public class ItensFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                DecimalFormat precision = new DecimalFormat("0.00");
-
-                ListaVM listaVM = new ViewModelProvider(getActivity()).get(ListaVM.class);
                 listaVM.atualizaTotal();
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

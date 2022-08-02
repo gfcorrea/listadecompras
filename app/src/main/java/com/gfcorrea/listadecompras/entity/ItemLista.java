@@ -14,6 +14,7 @@ public class ItemLista {
     private String codigo_barra;
     private double quantidade;
     private double preco;
+    private double valor_total;
 
     public ItemLista() {
     }
@@ -64,5 +65,13 @@ public class ItemLista {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public double getValor_total() {
+        return valor_total;
+    }
+
+    public void setValor_total(double valor_total) {
+        this.valor_total = valor_total;
     }
 }

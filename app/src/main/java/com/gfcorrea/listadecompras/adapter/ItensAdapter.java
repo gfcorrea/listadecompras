@@ -17,14 +17,17 @@ import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.ItemLista;
+import com.gfcorrea.listadecompras.viewmodel.ItemVM;
 
 import java.util.List;
 
 public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHolder> {
 
     List<ItemLista> lista;
+    ItemVM itemVM;
 
-    public ItensAdapter(List<ItemLista> lista) {
+    public ItensAdapter(List<ItemLista> lista, ItemVM itemVM) {
+        this.itemVM = itemVM;
         this.lista = lista;
     }
 
@@ -65,6 +68,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
                 lista.remove(position);
                 notifyItemRemoved(position);
                 notifyDataSetChanged();
+                itemVM.atualizaTotal();
 
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
