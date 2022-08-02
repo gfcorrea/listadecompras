@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,6 @@
         android:id="@+id/buttonVoltarItens"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/ic_arrow_back_24"
         android:contentDescription="Voltar para a tela inicial"
         app:layout_constraintStart_toStartOf="parent"

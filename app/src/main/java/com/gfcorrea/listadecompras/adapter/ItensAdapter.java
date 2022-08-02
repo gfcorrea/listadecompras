@@ -16,6 +16,7 @@ import com.gfcorrea.listadecompras.controller.ItemController;
 import com.gfcorrea.listadecompras.entity.ItemLista;
 import com.gfcorrea.listadecompras.viewmodel.ItemVM;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHolder> {
@@ -44,16 +45,22 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ItensViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        TextView textViewItemProduto;
-        TextView textViewItemQuantidade;
+        TextView textViewItemProduto, textViewItemQuantidade, textViewItemValor, textViewItemTotal;
+        DecimalFormat precision = new DecimalFormat("0.00");
 
         textViewItemProduto = holder.itemView.findViewById(R.id.textViewItemProduto);
         textViewItemQuantidade = holder.itemView.findViewById(R.id.textViewItemQuantidade);
+        textViewItemValor = holder.itemView.findViewById(R.id.textViewItemValor);
+        textViewItemTotal = holder.itemView.findViewById(R.id.textViewItemTotal);
+
         Button buttonExcluirItem = holder.itemView.findViewById(R.id.buttonExcluirItem);
 
         String id    =  String.valueOf(lista.get(position).getId());
+
         textViewItemProduto.setText( lista.get(position).getProduto());
-        textViewItemQuantidade.setText( String.valueOf(lista.get(position).getQuantidade()));
+        textViewItemQuantidade.setText( "Qtd: " + String.valueOf(lista.get(position).getQuantidade()));
+        textViewItemValor.setText( "Vlr: R$ " + precision.format( lista.get(position).getPreco() )  );
+        textViewItemTotal.setText( "Total: R$ " + precision.format( lista.get(position).getValor_total() )  );
 
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
             @Override

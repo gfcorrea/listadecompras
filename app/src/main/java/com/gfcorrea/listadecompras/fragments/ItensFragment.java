@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -56,6 +57,8 @@ public class ItensFragment extends Fragment {
         AddFAB              = v.findViewById(R.id.floatingActionButtonAddItem);
 
         ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
+        textViewTituloItens.setText("Lista: " + listaVM.getNome());
+
         ItemVM itemVM = new ViewModelProvider(requireActivity()).get(ItemVM.class);
 
         final Observer<String> itemObserver = new Observer<String>() {
@@ -75,7 +78,10 @@ public class ItensFragment extends Fragment {
         ItensAdapter itemAdapter = new ItensAdapter(itemVM);
 
         recyclerViewItens.setAdapter(itemAdapter);
-        textViewTituloItens.setText("Lista: " + listaVM.getNome());
+
+
+        recyclerViewItens.addItemDecoration(
+                new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
 
 
         buttonVoltar.setOnClickListener(new View.OnClickListener() {
