@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.controller.ItemController;
-import com.gfcorrea.listadecompras.dao.ItemListaDao;
-import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.entity.ItemLista;
 import com.gfcorrea.listadecompras.viewmodel.ItemVM;
 
@@ -26,9 +23,9 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
     List<ItemLista> lista;
     ItemVM itemVM;
 
-    public ItensAdapter(List<ItemLista> lista, ItemVM itemVM) {
+    public ItensAdapter(ItemVM itemVM) {
         this.itemVM = itemVM;
-        this.lista = lista;
+        this.lista = itemVM.getLista();
     }
 
     @NonNull

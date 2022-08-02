@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gfcorrea.listadecompras.controller.ListaController;
 import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.entity.Lista;
@@ -29,7 +28,7 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
     private ListaVM listaVM;
 
     public ListasAdapter( ListaVM listaVM ) {
-        this.lista = listaVM.Listas_getAll();
+        this.lista = listaVM.getAll();
         this.listaVM = listaVM;
     }
 
@@ -59,8 +58,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-                ListaController listaController = new ListaController();
-                listaController.excluirID(id);
+
+                listaVM.deleteByID(id);
 
                 lista.remove(position);
                 notifyItemRemoved(position);

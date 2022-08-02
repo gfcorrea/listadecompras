@@ -65,13 +65,14 @@ public class ItensFragment extends Fragment {
             }
         } ;
 
+        ItemController itemController = new ItemController();
+
         itemVM.getTotalGeral().observe(getActivity(), itemObserver);
         itemVM.setId_lista(listaVM.getId());
         itemVM.atualizaTotal();
+        itemVM.setLista(itemController.itensDaListaID(listaVM.getId()));
 
-        ItemController controller = new ItemController();
-
-        ItensAdapter itemAdapter = new ItensAdapter( controller.itensDaListaID(listaVM.getId()), itemVM);
+        ItensAdapter itemAdapter = new ItensAdapter(itemVM);
 
         recyclerViewItens.setAdapter(itemAdapter);
         textViewTituloItens.setText("Lista: " + listaVM.getNome());

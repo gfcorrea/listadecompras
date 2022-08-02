@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        listaVM.getvalorTotalf().observe(getActivity(), valorObserver);
+        listaVM.getValorTotal().observe(getActivity(), valorObserver);
 
         adaptador = new ListasAdapter( listaVM );
 

@@ -5,16 +5,20 @@ import androidx.lifecycle.ViewModel;
 
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
+import com.gfcorrea.listadecompras.entity.ItemLista;
 
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 
 public class ItemVM extends ViewModel {
 
     private MutableLiveData<String> valorTotal;
     private DecimalFormat precision = new DecimalFormat("0.00");
+    private List<ItemLista> lista;
     private int id_lista;
+
 
     public MutableLiveData<String> getTotalGeral() {
         if (valorTotal == null) {
@@ -34,5 +38,13 @@ public class ItemVM extends ViewModel {
 
     public void setId_lista(int id_lista) {
         this.id_lista = id_lista;
+    }
+
+    public List<ItemLista> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<ItemLista> lista) {
+        this.lista = lista;
     }
 }
