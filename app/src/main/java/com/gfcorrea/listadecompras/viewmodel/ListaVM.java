@@ -12,9 +12,10 @@ import java.util.List;
 public class ListaVM extends ViewModel {
 
     DecimalFormat precision = new DecimalFormat("0.00");
-    List<Lista> listas;
+    List<Lista> lista;
     private int id;
     private String nome;
+    private MutableLiveData<String> numListas;
     private ListaController listaController = new ListaController();
     private MutableLiveData<String> valorTotal;
 
@@ -25,6 +26,13 @@ public class ListaVM extends ViewModel {
             valorTotal = new MutableLiveData<String>();
         }
         return valorTotal;
+    }
+
+    public MutableLiveData<String> getNumListas() {
+        if (numListas == null) {
+            numListas = new MutableLiveData<String>();
+        }
+        return numListas;
     }
 
     public int getId() {
@@ -44,8 +52,8 @@ public class ListaVM extends ViewModel {
     }
 
     public List<Lista> getAll(){
-        this.listas = listaController.getAll();
-        return listas;
+        this.lista = listaController.getAll();
+        return lista;
     }
 
     public void deleteByID(int id){
@@ -54,6 +62,7 @@ public class ListaVM extends ViewModel {
 
     public void atualizaTotal(){
         getValorTotal().setValue("R$ " + precision.format(listaController.pegaValorTotal()));
+        this.numListas.setValue(String.valueOf(lista.size()));
     }
 
 }

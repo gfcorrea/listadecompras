@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/excluir.xml" value="0.338" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/ic_carrinho.xml" value="0.1195" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/ic_delete_24.xml" value="0.338" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/logo_lista.xml" value="0.1" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/logo_profile.xml" value="0.1195" />
+        <entry key="..\:/Projetos/listadecompras/app/src/main/res/drawable/retangulo_borda.xml" value="0.1195" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/fragment_cadastro_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Projetos/listadecompras/app/src/main/res/layout/fragment_cadastro_lista.xml" value="0.36666666666666664" />

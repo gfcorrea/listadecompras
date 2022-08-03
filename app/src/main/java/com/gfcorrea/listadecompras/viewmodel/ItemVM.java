@@ -15,6 +15,8 @@ import java.util.List;
 public class ItemVM extends ViewModel {
 
     private MutableLiveData<String> valorTotal;
+    private MutableLiveData<String> numItens;
+
     private DecimalFormat precision = new DecimalFormat("0.00");
     private List<ItemLista> lista;
     private int id_lista;
@@ -27,9 +29,18 @@ public class ItemVM extends ViewModel {
         return valorTotal;
     }
 
+    public MutableLiveData<String> getNumItens() {
+        if (numItens == null) {
+            numItens = new MutableLiveData<String>();
+        }
+        return numItens;
+    }
+
     public void atualizaTotal(){
         ItemListaDao itemListaDao = AppDatabase.getInstance().itemListaDao();
         getTotalGeral().setValue( "R$ " + precision.format(itemListaDao.pegaTotalLista(this.getId_lista())) );
+
+        this.numItens.setValue(String.valueOf(lista.size()));
     }
 
     public int getId_lista() {

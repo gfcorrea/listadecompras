@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
    RecyclerView RecyclerViewLista;
    ListasAdapter adaptador;
    FloatingActionButton buttonAdicionar;
-   TextView valorTotal;
+   TextView valorTotal, textViewNumListas;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerViewLista =  v.findViewById(R.id.RecyclerViewLista);
         valorTotal        =  v.findViewById(R.id.textViewTotalGeral);
+        textViewNumListas =  v.findViewById(R.id.textViewNumListas);
 
         ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
 
@@ -56,7 +57,15 @@ public class HomeFragment extends Fragment {
             }
         };
 
+        final Observer<String> numListas = new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable final String valor) {
+                textViewNumListas.setText(valor);
+            }
+        };
+
         listaVM.getValorTotal().observe(getActivity(), valorObserver);
+        listaVM.getNumListas().observe(getActivity(), numListas);
 
         adaptador = new ListasAdapter( listaVM );
 
@@ -64,6 +73,9 @@ public class HomeFragment extends Fragment {
 
         RecyclerViewLista.addItemDecoration(
                 new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
+
+
+        listaVM.atualizaTotal();
 
         buttonAdicionar = v.findViewById(R.id.ButtonMainAdd);
 

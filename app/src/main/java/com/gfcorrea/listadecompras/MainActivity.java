@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         AppDatabase.setContexto(getApplicationContext());
 
-        ListaVM vmodel = new ViewModelProvider(this).get(ListaVM.class);
-        vmodel.atualizaTotal();
+        //ListaVM vmodel = new ViewModelProvider(this).get(ListaVM.class);
+        //vmodel.atualizaTotal();
     }
 
 }
