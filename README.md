@@ -23,8 +23,8 @@ A ideia é bastante simples mas é um app que abrange bastante do básico do des
 ## :camera: ScreenShots
 
 <p align="center">
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/182635536-463aab56-f6e3-4f70-bc50-8fe79d0571aa.PNG"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/182635546-975f3cd1-9a41-444d-a8db-ca168ec2f925.PNG"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/182635556-2f780fa6-c6c3-4aa1-b7d6-9289d7cac20b.PNG"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/182635566-bfa54fe1-9f4f-4e19-8d01-03bb1611bd11.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182683331-89ca140a-dcf4-42c9-8cee-b475c13791b7.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182683350-fd73b34c-7b3d-4253-b37b-aed1f75457b8.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182683365-871d2c70-f8b4-476d-8077-3a96e9c37e2a.PNG"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/182683370-4a7d62b7-156a-4d16-becd-bb7fb9c8c6d5.PNG"/>
 </p>
