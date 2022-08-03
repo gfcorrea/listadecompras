@@ -22,13 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         ListaVM vmodel = new ViewModelProvider(this).get(ListaVM.class);
         vmodel.atualizaTotal();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        HomeFragment fragment = new HomeFragment();
-        fragmentTransaction.add(R.id.fragmentContainerView2, fragment);
-        fragmentTransaction.commit();
     }
 
 }
