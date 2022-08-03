@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gfcorrea.listadecompras.R;
@@ -27,11 +28,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ItensFragment extends Fragment {
     private TextView textViewTituloItens, textViewTotalItens;
-    private Button buttonVoltar;
+    private ImageView buttonVoltar;
     private RecyclerView recyclerViewItens;
     private ItensAdapter adapter;
     private FloatingActionButton AddFAB;
-
 
     public ItensFragment() {
         // Required empty public constructor

@@ -23,7 +23,7 @@
         android:id="@+id/TextViewTituloItens"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="6dp"
         android:text="@string/hello_blank_fragment"
         android:textColor="@color/white"
@@ -34,21 +34,12 @@
         app:layout_constraintStart_toEndOf="@+id/buttonVoltarItens"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonVoltarItens"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_arrow_back_24"
-        android:contentDescription="Voltar para a tela inicial"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerViewItens"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -81,6 +72,16 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/buttonVoltarItens"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/voltar"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

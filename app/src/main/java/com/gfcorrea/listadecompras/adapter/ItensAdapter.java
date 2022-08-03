@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +57,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         textViewItemTotal = holder.itemView.findViewById(R.id.textViewItemTotal);
         checkBoxMarcado = holder.itemView.findViewById(R.id.checkBoxMarcado);
 
-        Button buttonExcluirItem = holder.itemView.findViewById(R.id.buttonExcluirItem);
+        ImageView buttonExcluirItem = holder.itemView.findViewById(R.id.buttonExcluirItem);
 
         String id    =  String.valueOf(lista.get(position).getId());
 

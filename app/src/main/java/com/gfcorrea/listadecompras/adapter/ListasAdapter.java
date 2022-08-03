@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
     public void onBindViewHolder(@NonNull ListaViewHolder holder, @SuppressLint("RecyclerView") int position) {
         TextView tNome  = holder.itemView.findViewById(R.id.textViewNome);
         TextView tTotal = holder.itemView.findViewById(R.id.textViewTotal);
-        Button buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
+        ImageView buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
         DecimalFormat precision = new DecimalFormat("0.00");
 
         int id       =  lista.get(position).getId();

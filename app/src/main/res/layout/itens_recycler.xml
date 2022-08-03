@@ -11,13 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="48dp">
 
+        <ImageView
+            android:id="@+id/buttonExcluirItem"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/lixeira" />
+
         <TextView
             android:id="@+id/textViewItemProduto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonExcluirItem"
@@ -51,27 +59,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/checkBoxMarcado" />
 
-        <Button
-            android:id="@+id/buttonExcluirItem"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/ic_delete_24"
-            android:contentDescription="Excluir item"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/textViewItemTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:minWidth="50dp"
             android:text="TextView"
             android:textSize="10sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonExcluirItem" />
+            app:layout_constraintEnd_toEndOf="@+id/textViewItemProduto" />
 
         <CheckBox
             android:id="@+id/checkBoxMarcado"
