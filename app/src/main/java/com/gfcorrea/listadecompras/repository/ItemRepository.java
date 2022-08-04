@@ -1,35 +1,35 @@
-package com.gfcorrea.listadecompras.controller;
+package com.gfcorrea.listadecompras.repository;
 
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
-import com.gfcorrea.listadecompras.entity.ItemLista;
+import com.gfcorrea.listadecompras.model.ItemListaModel;
 
 import java.util.List;
 
-public class ItemController {
+public class ItemRepository {
 
-    public List<ItemLista> itensDaListaID(int id){
+    public List<ItemListaModel> itensDaListaID(int id){
         ItemListaDao itemListaDao = AppDatabase.getInstance().itemListaDao();
         return itemListaDao.getAll(id);
     }
 
-    public void inserir(ItemLista item){
+    public void inserir(ItemListaModel item){
         AppDatabase db = AppDatabase.getInstance();
         ItemListaDao itemListaDao = db.itemListaDao();
         itemListaDao.insertAll(item);
 
-        ListaController listaController = new ListaController();
-        listaController.atualizarValor(item.getId_lista(), item.getValor_total());
+        ListaRepository listaRepository = new ListaRepository();
+        listaRepository.atualizarValor(item.getId_lista(), item.getValor_total());
     }
 
     public void apagarID(long id){
         AppDatabase db = AppDatabase.getInstance();
         ItemListaDao itemListaDao = db.itemListaDao();
 
-        ItemLista item = itemListaDao.findById(id);
+        ItemListaModel item = itemListaDao.findById(id);
 
-        ListaController listaController = new ListaController();
-        listaController.atualizarValor(item.getId_lista(), item.getValor_total() *-1 );
+        ListaRepository listaRepository = new ListaRepository();
+        listaRepository.atualizarValor(item.getId_lista(), item.getValor_total() *-1 );
 
         itemListaDao.deleteById(id);
     }

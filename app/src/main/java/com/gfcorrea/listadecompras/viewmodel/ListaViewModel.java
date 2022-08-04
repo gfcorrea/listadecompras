@@ -3,23 +3,23 @@ package com.gfcorrea.listadecompras.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.gfcorrea.listadecompras.controller.ListaController;
-import com.gfcorrea.listadecompras.entity.Lista;
+import com.gfcorrea.listadecompras.model.ListaModel;
+import com.gfcorrea.listadecompras.repository.ListaRepository;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class ListaVM extends ViewModel {
+public class ListaViewModel extends ViewModel {
 
     DecimalFormat precision = new DecimalFormat("0.00");
-    List<Lista> lista;
+    List<ListaModel> listaModel;
     private int id;
     private String nome;
     private MutableLiveData<String> numListas;
-    private ListaController listaController = new ListaController();
+    private ListaRepository listaRepository = new ListaRepository();
     private MutableLiveData<String> valorTotal;
 
-    public ListaVM() {  }
+    public ListaViewModel() {  }
 
     public MutableLiveData<String> getValorTotal() {
         if (valorTotal == null) {
@@ -51,18 +51,18 @@ public class ListaVM extends ViewModel {
         this.nome = nome;
     }
 
-    public List<Lista> getAll(){
-        this.lista = listaController.getAll();
-        return lista;
+    public List<ListaModel> getAll(){
+        this.listaModel = listaRepository.getAll();
+        return listaModel;
     }
 
     public void deleteByID(int id){
-        listaController.excluirID(id);
+        listaRepository.excluirID(id);
     }
 
     public void atualizaTotal(){
-        getValorTotal().setValue("R$ " + precision.format(listaController.pegaValorTotal()));
-        this.numListas.setValue(String.valueOf(lista.size()));
+        getValorTotal().setValue("R$ " + precision.format(listaRepository.pegaValorTotal()));
+        this.numListas.setValue(String.valueOf(listaModel.size()));
     }
 
 }

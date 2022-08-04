@@ -9,14 +9,14 @@
 
 ## :memo: Descrição do Projeto
 Este é um projeto simples, feito durante meu aprendizado de Android Studio.<br>
-Com este App voce poderá criar suas listas de compras e enquanto vai ao mercado pode ir marcando o que você já comprou.<br>
+Com este App voce poderá criar suas listaModels de compras e enquanto vai ao mercado pode ir marcando o que você já comprou.<br>
 A ideia é bastante simples mas é um app que abrange bastante do básico do desenvolvimento em Android.<br>
 
 
 
 ## :hammer: Funcionalidades do projeto
 
-- Criar Listas Personalizadas: Você pode crias quantas listas quiser com quantos produtos precisar.
+- Criar Listas Personalizadas: Você pode crias quantas listaModels quiser com quantos produtos precisar.
 - Totalizar a Lista: Enquanto adiciona os produtos o App irá apresentar o valor total do pedido.
 - Marcar os produtos já adquiridos: Marque os produtos que você já colocou em seu carrinho.
 

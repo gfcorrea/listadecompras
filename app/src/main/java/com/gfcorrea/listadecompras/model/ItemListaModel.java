@@ -1,10 +1,10 @@
-package com.gfcorrea.listadecompras.entity;
+package com.gfcorrea.listadecompras.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "item_lista")
-public class ItemLista {
+public class ItemListaModel {
     @PrimaryKey(autoGenerate = true)
     private long id;
 
@@ -16,7 +16,7 @@ public class ItemLista {
     private double valor_total;
     private boolean marcado;
 
-    public ItemLista() {
+    public ItemListaModel() {
     }
 
     public long getId() {

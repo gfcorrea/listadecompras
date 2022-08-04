@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gfcorrea.listadecompras.R;
-import com.gfcorrea.listadecompras.controller.ItemController;
+import com.gfcorrea.listadecompras.model.ItemListaModel;
+import com.gfcorrea.listadecompras.repository.ItemRepository;
 import com.gfcorrea.listadecompras.databinding.FragmentCadastroItemBinding;
-import com.gfcorrea.listadecompras.entity.ItemLista;
-import com.gfcorrea.listadecompras.viewmodel.ListaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
 
 
@@ -38,20 +38,20 @@ public class CadastroItemFragment extends Fragment {
         binding = FragmentCadastroItemBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
 
-        ListaVM listaVM = new ViewModelProvider(getActivity()).get(ListaVM.class);
+        ListaViewModel listaViewModel = new ViewModelProvider(getActivity()).get(ListaViewModel.class);
 
         binding.btnSalvarItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                ItemLista item = new ItemLista();
+                ItemListaModel item = new ItemListaModel();
                 item.setProduto( binding.txtProduto.getText().toString() );
                 item.setQuantidade( Double.parseDouble(binding.txtQuantidade.getText().toString()) );
                 item.setPreco( Double.parseDouble(binding.txtPreco.getText().toString()) );
                 item.setValor_total( item.getPreco() * item.getQuantidade() );
-                item.setId_lista( listaVM.getId() );
+                item.setId_lista( listaViewModel.getId() );
 
-                ItemController controller = new ItemController();
+                ItemRepository controller = new ItemRepository();
                 controller.inserir(item);
 
                 voltarItens();

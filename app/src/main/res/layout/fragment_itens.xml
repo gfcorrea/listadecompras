@@ -42,7 +42,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
-        android:contentDescription="Adicionar novo item a esta lista."
+        android:contentDescription="Adicionar novo item a esta listaModel."
         android:src="@drawable/ic_add_24"
         app:backgroundTint="@color/cor_tema"
         app:layout_constraintBottom_toBottomOf="parent"

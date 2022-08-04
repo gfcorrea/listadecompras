@@ -1,11 +1,11 @@
-package com.gfcorrea.listadecompras.entity;
+package com.gfcorrea.listadecompras.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "lista")
-public class Lista {
+public class ListaModel {
     @PrimaryKey(autoGenerate = true)
     private int id;
 

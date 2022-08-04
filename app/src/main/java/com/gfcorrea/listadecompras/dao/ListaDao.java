@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.gfcorrea.listadecompras.entity.Lista;
+import com.gfcorrea.listadecompras.model.ListaModel;
 
 import java.util.List;
 
@@ -14,19 +14,19 @@ import java.util.List;
 public interface ListaDao {
 
     @Query("SELECT * FROM lista")
-     List<Lista>  getAll();
+     List<ListaModel>  getAll();
 
     @Query("SELECT * FROM lista WHERE id IN (:listaIds)")
-    List<Lista> loadAllByIds(int[] listaIds);
+    List<ListaModel> loadAllByIds(int[] listaIds);
 
     @Query("SELECT * FROM lista WHERE id = :id")
-    Lista findById(int id);
+    ListaModel findById(int id);
 
     @Query("DELETE FROM lista WHERE id = :id")
     void deleteById(int id);
 
     @Query("SELECT * FROM lista WHERE nome LIKE :nome  LIMIT 1")
-    Lista findByName(String nome);
+    ListaModel findByName(String nome);
 
     @Query("UPDATE lista SET valor = valor + :val WHERE id = :id")
     void atualizarValor(int id, double val);
@@ -36,9 +36,9 @@ public interface ListaDao {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(Lista... listas);
+    void insertAll(ListaModel... listaModels);
 
     @Delete
-    void delete(Lista lista);
+    void delete(ListaModel listaModel);
 
 }

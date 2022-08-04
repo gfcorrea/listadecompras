@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ItensAdapter;
-import com.gfcorrea.listadecompras.controller.ItemController;
+import com.gfcorrea.listadecompras.repository.ItemRepository;
 
 import com.gfcorrea.listadecompras.databinding.FragmentItensBinding;
-import com.gfcorrea.listadecompras.viewmodel.ItemVM;
-import com.gfcorrea.listadecompras.viewmodel.ListaVM;
+import com.gfcorrea.listadecompras.viewmodel.ItemViewModel;
+import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
 
 public class ItensFragment extends Fragment {
@@ -41,10 +41,10 @@ public class ItensFragment extends Fragment {
         binding = FragmentItensBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
-        ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
-        binding.TextViewTituloItens.setText(listaVM.getNome());
+        ListaViewModel listaViewModel = new ViewModelProvider(requireActivity()).get(ListaViewModel.class);
+        binding.TextViewTituloItens.setText(listaViewModel.getNome());
 
-        ItemVM itemVM = new ViewModelProvider(requireActivity()).get(ItemVM.class);
+        ItemViewModel itemViewModel = new ViewModelProvider(requireActivity()).get(ItemViewModel.class);
 
         final Observer<String> itemObserver = new Observer<String>() {
             @Override
@@ -61,28 +61,28 @@ public class ItensFragment extends Fragment {
             }
         } ;
 
-        itemVM.getTotalGeral().observe(getActivity(), itemObserver);
-        itemVM.getNumItens().observe(getActivity(), numItemObserver);
+        itemViewModel.getTotalGeral().observe(getActivity(), itemObserver);
+        itemViewModel.getNumItens().observe(getActivity(), numItemObserver);
 
-        itemVM.setId_lista(listaVM.getId());
+        itemViewModel.setId_lista(listaViewModel.getId());
 
-        ItemController itemController = new ItemController();
-        itemVM.setLista(itemController.itensDaListaID(listaVM.getId()));
+        ItemRepository itemRepository = new ItemRepository();
+        itemViewModel.setLista(itemRepository.itensDaListaID(listaViewModel.getId()));
 
-        ItensAdapter itemAdapter = new ItensAdapter(itemVM);
+        ItensAdapter itemAdapter = new ItensAdapter(itemViewModel);
 
         binding.RecyclerViewItens.setAdapter(itemAdapter);
 
         binding.RecyclerViewItens.addItemDecoration(
                 new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
 
-        itemVM.atualizaTotal();
+        itemViewModel.atualizaTotal();
 
         binding.buttonVoltarItens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                listaVM.atualizaTotal();
+                listaViewModel.atualizaTotal();
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

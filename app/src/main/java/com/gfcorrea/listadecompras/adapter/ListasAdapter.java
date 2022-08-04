@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,24 +14,22 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gfcorrea.listadecompras.databinding.FragmentHomeBinding;
-import com.gfcorrea.listadecompras.databinding.ListaRecyclerBinding;
 import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
-import com.gfcorrea.listadecompras.entity.Lista;
-import com.gfcorrea.listadecompras.viewmodel.ListaVM;
+import com.gfcorrea.listadecompras.model.ListaModel;
+import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
-    private List<Lista> lista;
-    private ListaVM listaVM;
+    private List<ListaModel> listaModel;
+    private ListaViewModel listaViewModel;
 
-    public ListasAdapter( ListaVM listaVM ) {
-        this.lista = listaVM.getAll();
-        this.listaVM = listaVM;
+    public ListasAdapter( ListaViewModel listaViewModel) {
+        this.listaModel = listaViewModel.getAll();
+        this.listaViewModel = listaViewModel;
     }
 
     @NonNull
@@ -51,10 +48,10 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         ImageView buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
         DecimalFormat precision = new DecimalFormat("0.00");
 
-        int id       =  lista.get(position).getId();
-        double total =  lista.get(position).getValor_total();
+        int id       =  listaModel.get(position).getId();
+        double total =  listaModel.get(position).getValor_total();
 
-        tNome.setText(lista.get(position).getNome());
+        tNome.setText(listaModel.get(position).getNome());
         tTotal.setText( "R$ "+ precision.format(total) );
 
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
@@ -62,13 +59,13 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
             @Override
             public void onClick(View view) {
 
-                listaVM.deleteByID(id);
+                listaViewModel.deleteByID(id);
 
-                lista.remove(position);
+                listaModel.remove(position);
                 notifyItemRemoved(position);
                 notifyDataSetChanged();
 
-                listaVM.atualizaTotal();
+                listaViewModel.atualizaTotal();
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
         });
@@ -76,7 +73,7 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
     @Override
     public int getItemCount() {
-        return lista.size();
+        return listaModel.size();
     }
 
     public class ListaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -89,8 +86,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         //Implementa View.OnClickListener
         @Override
         public void onClick(View v) {
-            listaVM.setId(lista.get( getAdapterPosition()).getId());
-            listaVM.setNome(lista.get( getAdapterPosition()).getNome());
+            listaViewModel.setId(listaModel.get( getAdapterPosition()).getId());
+            listaViewModel.setNome(listaModel.get( getAdapterPosition()).getNome());
 
             FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

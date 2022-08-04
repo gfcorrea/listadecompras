@@ -1,31 +1,31 @@
-package com.gfcorrea.listadecompras.controller;
+package com.gfcorrea.listadecompras.repository;
 
 import com.gfcorrea.listadecompras.dao.ListaDao;
 import com.gfcorrea.listadecompras.database.AppDatabase;
-import com.gfcorrea.listadecompras.entity.Lista;
+import com.gfcorrea.listadecompras.model.ListaModel;
 
 import java.util.List;
 
-public class ListaController {
+public class ListaRepository {
 
-    public List<Lista> getAll(){
+    public List<ListaModel> getAll(){
         ListaDao listaDao = AppDatabase.getInstance().listaDao();
 
         return listaDao.getAll();
     }
 
-    public void inserir(Lista lista){
+    public void inserir(ListaModel listaModel){
         AppDatabase db = AppDatabase.getInstance();
         ListaDao listaDao = db.listaDao();
 
-        lista.setValor_total(0.0);
+        listaModel.setValor_total(0.0);
 
-        listaDao.insertAll(lista);
+        listaDao.insertAll(listaModel);
     }
 
     public void excluirID(int id){
-        ItemController itemController = new ItemController();
-        itemController.apagarTodosItensDaLista(id);
+        ItemRepository itemRepository = new ItemRepository();
+        itemRepository.apagarTodosItensDaLista(id);
 
         ListaDao listaDao = AppDatabase.getInstance().listaDao();
         listaDao.deleteById( id);

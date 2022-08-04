@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 
 
 import com.gfcorrea.listadecompras.R;
-import com.gfcorrea.listadecompras.controller.ListaController;
+import com.gfcorrea.listadecompras.repository.ListaRepository;
 import com.gfcorrea.listadecompras.databinding.FragmentCadastroListaBinding;
-import com.gfcorrea.listadecompras.entity.Lista;
+import com.gfcorrea.listadecompras.model.ListaModel;
 
 
 public class CadastroListaFragment extends Fragment {
@@ -39,11 +39,11 @@ public class CadastroListaFragment extends Fragment {
         binding.btnSalvarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Lista lista = new Lista();
-                lista.setNome(binding.txtNomeLista.getText().toString());
+                ListaModel listaModel = new ListaModel();
+                listaModel.setNome(binding.txtNomeLista.getText().toString());
 
-                ListaController controller = new ListaController();
-                controller.inserir(lista);
+                ListaRepository controller = new ListaRepository();
+                controller.inserir(listaModel);
 
                 voltarHome();
             }

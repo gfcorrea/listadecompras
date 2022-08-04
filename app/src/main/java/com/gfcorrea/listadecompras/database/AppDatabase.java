@@ -8,11 +8,11 @@ import androidx.room.RoomDatabase;
 
 import com.gfcorrea.listadecompras.dao.ItemListaDao;
 import com.gfcorrea.listadecompras.dao.ListaDao;
-import com.gfcorrea.listadecompras.entity.ItemLista;
-import com.gfcorrea.listadecompras.entity.Lista;
+import com.gfcorrea.listadecompras.model.ItemListaModel;
+import com.gfcorrea.listadecompras.model.ListaModel;
 
 @Database(
-        entities = {Lista.class, ItemLista.class},
+        entities = {ListaModel.class, ItemListaModel.class},
         version = 1
 )
 

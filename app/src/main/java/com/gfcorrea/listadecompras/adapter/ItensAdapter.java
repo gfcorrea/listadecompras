@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,22 +13,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.R;
-import com.gfcorrea.listadecompras.controller.ItemController;
-import com.gfcorrea.listadecompras.entity.ItemLista;
-import com.gfcorrea.listadecompras.viewmodel.ItemVM;
+import com.gfcorrea.listadecompras.repository.ItemRepository;
+import com.gfcorrea.listadecompras.model.ItemListaModel;
+import com.gfcorrea.listadecompras.viewmodel.ItemViewModel;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHolder> {
 
-    private List<ItemLista> lista;
-    private ItemVM itemVM;
+    private List<ItemListaModel> lista;
+    private ItemViewModel itemViewModel;
 
 
-    public ItensAdapter(ItemVM itemVM) {
-        this.itemVM = itemVM;
-        this.lista = itemVM.getLista();
+    public ItensAdapter(ItemViewModel itemViewModel) {
+        this.itemViewModel = itemViewModel;
+        this.lista = itemViewModel.getLista();
     }
 
     @NonNull
@@ -72,13 +71,13 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
             @Override
             public void onClick(View view) {
 
-                ItemController itemController = new ItemController();
-                itemController.apagarID(Integer.parseInt(id));
+                ItemRepository itemRepository = new ItemRepository();
+                itemRepository.apagarID(Integer.parseInt(id));
 
                 lista.remove(position);
                 notifyItemRemoved(position);
                 notifyDataSetChanged();
-                itemVM.atualizaTotal();
+                itemViewModel.atualizaTotal();
 
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
@@ -86,8 +85,8 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         checkBoxMarcado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ItemController itemController = new ItemController();
-                itemController.atualizarMarcacao(lista.get(position).getId(), checkBoxMarcado.isChecked());
+                ItemRepository itemRepository = new ItemRepository();
+                itemRepository.atualizarMarcacao(lista.get(position).getId(), checkBoxMarcado.isChecked());
             }
         });
 

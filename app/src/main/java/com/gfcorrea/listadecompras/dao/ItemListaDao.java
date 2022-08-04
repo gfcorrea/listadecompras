@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.gfcorrea.listadecompras.entity.ItemLista;
+import com.gfcorrea.listadecompras.model.ItemListaModel;
 
 import java.util.List;
 
@@ -14,19 +14,19 @@ import java.util.List;
 public interface ItemListaDao {
 
     @Query("SELECT * FROM item_lista where id_lista = :id")
-    List<ItemLista> getAll(int id);
+    List<ItemListaModel> getAll(int id);
 
     @Query("SELECT * FROM item_lista WHERE id IN (:listaIds)")
-    List<ItemLista> loadAllByIds(int[] listaIds);
+    List<ItemListaModel> loadAllByIds(int[] listaIds);
 
     @Query("SELECT * FROM item_lista WHERE id = :id")
-    ItemLista findById(long id);
+    ItemListaModel findById(long id);
 
     @Query("DELETE FROM item_lista WHERE id = :id")
     void deleteById(long id);
 
     @Query("SELECT * FROM item_lista WHERE produto LIKE :nome  LIMIT 1")
-    ItemLista findByName(String nome);
+    ItemListaModel findByName(String nome);
 
     @Query("DELETE FROM item_lista where id_lista = :id")
     void deleteAllByListID(int id);
@@ -38,9 +38,9 @@ public interface ItemListaDao {
     void atualizaMarcacao(long id, boolean marcado);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(ItemLista... listas);
+    void insertAll(ItemListaModel... listas);
 
     @Delete
-    void delete(ItemLista lista);
+    void delete(ItemListaModel lista);
 
 }

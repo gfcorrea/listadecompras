@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
 import com.gfcorrea.listadecompras.databinding.FragmentHomeBinding;
-import com.gfcorrea.listadecompras.viewmodel.ListaVM;
+import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
 
 public class HomeFragment extends Fragment {
@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
-        ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
+        ListaViewModel listaViewModel = new ViewModelProvider(requireActivity()).get(ListaViewModel.class);
 
         final Observer<String> valorObserver = new Observer<String>() {
             @Override
@@ -58,17 +58,17 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        listaVM.getValorTotal().observe(getActivity(), valorObserver);
-        listaVM.getNumListas().observe(getActivity(), numListas);
+        listaViewModel.getValorTotal().observe(getActivity(), valorObserver);
+        listaViewModel.getNumListas().observe(getActivity(), numListas);
 
-        adaptador = new ListasAdapter( listaVM );
+        adaptador = new ListasAdapter(listaViewModel);
 
         binding.RecyclerViewLista.setAdapter(adaptador);
 
         binding.RecyclerViewLista.addItemDecoration(
                 new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
 
-        listaVM.atualizaTotal();
+        listaViewModel.atualizaTotal();
 
         binding.btnNovaLista.setOnClickListener(new View.OnClickListener() {
             @Override
