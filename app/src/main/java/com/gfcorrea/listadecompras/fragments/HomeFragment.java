@@ -10,25 +10,22 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ListasAdapter;
+import com.gfcorrea.listadecompras.databinding.FragmentHomeBinding;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class HomeFragment extends Fragment {
 
-   RecyclerView RecyclerViewLista;
+    private FragmentHomeBinding binding;
+
    ListasAdapter adaptador;
-   FloatingActionButton buttonAdicionar;
-   TextView valorTotal, textViewNumListas;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -42,25 +39,22 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
-        RecyclerViewLista =  v.findViewById(R.id.RecyclerViewLista);
-        valorTotal        =  v.findViewById(R.id.textViewTotalGeral);
-        textViewNumListas =  v.findViewById(R.id.textViewNumListas);
+        binding = FragmentHomeBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
 
         ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
 
         final Observer<String> valorObserver = new Observer<String>() {
             @Override
-            public void onChanged(@Nullable final String valor) {
-                valorTotal.setText(valor);
+            public void onChanged(@Nullable final String valor)  {
+                binding.textViewTotalGeral.setText(valor);
             }
         };
 
         final Observer<String> numListas = new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String valor) {
-                textViewNumListas.setText(valor);
+                binding.textViewNumListas.setText(valor);
             }
         };
 
@@ -69,17 +63,14 @@ public class HomeFragment extends Fragment {
 
         adaptador = new ListasAdapter( listaVM );
 
-        RecyclerViewLista.setAdapter(adaptador);
+        binding.RecyclerViewLista.setAdapter(adaptador);
 
-        RecyclerViewLista.addItemDecoration(
+        binding.RecyclerViewLista.addItemDecoration(
                 new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
-
 
         listaVM.atualizaTotal();
 
-        buttonAdicionar = v.findViewById(R.id.ButtonMainAdd);
-
-        buttonAdicionar.setOnClickListener(new View.OnClickListener() {
+        binding.btnNovaLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
@@ -91,7 +82,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        return v;
+        return view;
     }
 
 

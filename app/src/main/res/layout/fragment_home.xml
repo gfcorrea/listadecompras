@@ -8,7 +8,7 @@
     tools:context=".fragments.HomeFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/ButtonMainAdd"
+        android:id="@+id/btnNovaLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,7 +52,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonMainAdd"
+        app:layout_constraintBottom_toTopOf="@+id/btnNovaLista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
@@ -83,7 +83,7 @@
         android:layout_marginBottom="4dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ButtonMainAdd"
+        app:layout_constraintEnd_toStartOf="@+id/btnNovaLista"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 

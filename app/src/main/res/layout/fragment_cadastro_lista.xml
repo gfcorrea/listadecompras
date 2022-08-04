@@ -34,7 +34,7 @@
         android:layout_marginTop="4dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputNome"
+            android:id="@+id/txtNomeLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome" />
@@ -47,13 +47,13 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/buttonSalvarLista"
+            android:id="@+id/btnSalvarLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar" />
 
         <Button
-            android:id="@+id/buttonCancelarLista"
+            android:id="@+id/btnCancelarLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancelar" />

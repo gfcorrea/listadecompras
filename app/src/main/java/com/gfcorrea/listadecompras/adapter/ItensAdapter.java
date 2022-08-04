@@ -23,8 +23,9 @@ import java.util.List;
 
 public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHolder> {
 
-    List<ItemLista> lista;
-    ItemVM itemVM;
+    private List<ItemLista> lista;
+    private ItemVM itemVM;
+
 
     public ItensAdapter(ItemVM itemVM) {
         this.itemVM = itemVM;

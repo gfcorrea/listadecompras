@@ -9,16 +9,16 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.controller.ListaController;
+import com.gfcorrea.listadecompras.databinding.FragmentCadastroListaBinding;
 import com.gfcorrea.listadecompras.entity.Lista;
-import com.google.android.material.textfield.TextInputEditText;
+
 
 public class CadastroListaFragment extends Fragment {
-    TextInputEditText textInputNome;
-    Button buttonSalvarLista, buttonCancelarLista;
+    private FragmentCadastroListaBinding binding;
 
     public CadastroListaFragment() {
         // Required empty public constructor
@@ -32,37 +32,31 @@ public class CadastroListaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_cadastro_lista, container, false);
-        textInputNome = v.findViewById(R.id.TextInputNome);
-        buttonSalvarLista = v.findViewById(R.id.buttonSalvarLista);
-        buttonCancelarLista = v.findViewById(R.id.buttonCancelarLista);
 
-        buttonSalvarLista.setOnClickListener(new View.OnClickListener() {
+        binding = FragmentCadastroListaBinding.inflate(getLayoutInflater());
+        View view  = binding.getRoot();
+
+        binding.btnSalvarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SalvarLista();
+                Lista lista = new Lista();
+                lista.setNome(binding.txtNomeLista.getText().toString());
+
+                ListaController controller = new ListaController();
+                controller.inserir(lista);
+
+                voltarHome();
             }
         });
 
-        buttonCancelarLista.setOnClickListener(new View.OnClickListener() {
+        binding.btnCancelarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 voltarHome();
             }
         });
 
-        return v;
-    }
-
-    public void SalvarLista() {
-        Lista lista = new Lista();
-        lista.setNome(textInputNome.getText().toString());
-
-        ListaController controller = new ListaController();
-        controller.inserir(lista);
-
-        voltarHome();
+        return view;
     }
 
     public void voltarHome(){

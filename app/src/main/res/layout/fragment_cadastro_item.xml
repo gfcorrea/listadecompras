@@ -34,7 +34,7 @@
         android:layout_marginBottom="4dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EditProduto"
+            android:id="@+id/txtProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Produto" />
@@ -46,7 +46,7 @@
         android:layout_marginBottom="4dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EditQuantidade"
+            android:id="@+id/txtQuantidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Quantidade"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EditPreco"
+            android:id="@+id/txtPreco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Preço"
@@ -72,13 +72,13 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/buttonSalvarItem"
+            android:id="@+id/btnSalvarItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar" />
 
         <Button
-            android:id="@+id/buttonCancelarItem"
+            android:id="@+id/btnCancelarItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"

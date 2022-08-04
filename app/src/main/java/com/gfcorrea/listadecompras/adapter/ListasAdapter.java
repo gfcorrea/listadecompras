@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gfcorrea.listadecompras.databinding.FragmentHomeBinding;
+import com.gfcorrea.listadecompras.databinding.ListaRecyclerBinding;
 import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.entity.Lista;

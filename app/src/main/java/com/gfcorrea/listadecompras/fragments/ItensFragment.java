@@ -8,30 +8,23 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.adapter.ItensAdapter;
 import com.gfcorrea.listadecompras.controller.ItemController;
 
+import com.gfcorrea.listadecompras.databinding.FragmentItensBinding;
 import com.gfcorrea.listadecompras.viewmodel.ItemVM;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ItensFragment extends Fragment {
-    private TextView textViewTituloItens, textViewTotalItens, textViewNumItens;
-    private ImageView buttonVoltar;
-    private RecyclerView recyclerViewItens;
-    private ItensAdapter adapter;
-    private FloatingActionButton AddFAB;
+    private FragmentItensBinding binding;
 
     public ItensFragment() {
         // Required empty public constructor
@@ -45,56 +38,47 @@ public class ItensFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        View v = inflater.inflate(R.layout.fragment_itens, container, false);
-
-        recyclerViewItens   = v.findViewById(R.id.RecyclerViewItens);
-        textViewTituloItens = v.findViewById(R.id.TextViewTituloItens);
-        textViewTotalItens  = v.findViewById(R.id.textViewTotalItens);
-        textViewNumItens  = v.findViewById(R.id.textViewNumItens);
-        buttonVoltar        = v.findViewById(R.id.buttonVoltarItens);
-
-        AddFAB              = v.findViewById(R.id.floatingActionButtonAddItem);
+        binding = FragmentItensBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
 
         ListaVM listaVM = new ViewModelProvider(requireActivity()).get(ListaVM.class);
-        textViewTituloItens.setText(listaVM.getNome());
+        binding.TextViewTituloItens.setText(listaVM.getNome());
 
         ItemVM itemVM = new ViewModelProvider(requireActivity()).get(ItemVM.class);
 
         final Observer<String> itemObserver = new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                textViewTotalItens.setText(s);
+
+                binding.textViewTotalItens.setText(s);
             }
         } ;
 
         final Observer<String> numItemObserver = new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                textViewNumItens.setText(s);
+                binding.textViewNumItens.setText(s);
             }
         } ;
 
-
-        ItemController itemController = new ItemController();
-
         itemVM.getTotalGeral().observe(getActivity(), itemObserver);
         itemVM.getNumItens().observe(getActivity(), numItemObserver);
+
         itemVM.setId_lista(listaVM.getId());
+
+        ItemController itemController = new ItemController();
         itemVM.setLista(itemController.itensDaListaID(listaVM.getId()));
 
         ItensAdapter itemAdapter = new ItensAdapter(itemVM);
 
-        recyclerViewItens.setAdapter(itemAdapter);
+        binding.RecyclerViewItens.setAdapter(itemAdapter);
 
-        recyclerViewItens.addItemDecoration(
+        binding.RecyclerViewItens.addItemDecoration(
                 new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
-
 
         itemVM.atualizaTotal();
 
-        buttonVoltar.setOnClickListener(new View.OnClickListener() {
+        binding.buttonVoltarItens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -109,7 +93,7 @@ public class ItensFragment extends Fragment {
             }
         });
 
-        AddFAB.setOnClickListener(new View.OnClickListener() {
+        binding.btnNovoItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -122,7 +106,7 @@ public class ItensFragment extends Fragment {
         });
 
 
-        return v;
+        return view;
     }
 
 }

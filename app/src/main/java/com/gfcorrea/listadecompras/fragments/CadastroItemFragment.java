@@ -11,19 +11,17 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.controller.ItemController;
+import com.gfcorrea.listadecompras.databinding.FragmentCadastroItemBinding;
 import com.gfcorrea.listadecompras.entity.ItemLista;
 import com.gfcorrea.listadecompras.viewmodel.ListaVM;
-import com.google.android.material.textfield.TextInputEditText;
+
 
 
 public class CadastroItemFragment extends Fragment {
-    TextInputEditText produto, quantidade, preco;
-
-    Button buttonSalvarItem, buttonCancelarItem;
+    private FragmentCadastroItemBinding binding;
 
     public CadastroItemFragment() {
         // Required empty public constructor
@@ -37,25 +35,19 @@ public class CadastroItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_cadastro_item, container, false);
-
-        buttonSalvarItem = v.findViewById(R.id.buttonSalvarItem);
-        buttonCancelarItem = v.findViewById(R.id.buttonCancelarItem);
-        produto    = v.findViewById(R.id.EditProduto);
-        quantidade = v.findViewById(R.id.EditQuantidade);
-        preco  = v.findViewById(R.id.EditPreco);
+        binding = FragmentCadastroItemBinding.inflate(getLayoutInflater());
+        View v = binding.getRoot();
 
         ListaVM listaVM = new ViewModelProvider(getActivity()).get(ListaVM.class);
 
-        buttonSalvarItem.setOnClickListener(new View.OnClickListener() {
+        binding.btnSalvarItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 ItemLista item = new ItemLista();
-                item.setProduto( produto.getText().toString() );
-                item.setQuantidade( Double.parseDouble(quantidade.getText().toString()) );
-                item.setPreco( Double.parseDouble(preco.getText().toString()) );
+                item.setProduto( binding.txtProduto.getText().toString() );
+                item.setQuantidade( Double.parseDouble(binding.txtQuantidade.getText().toString()) );
+                item.setPreco( Double.parseDouble(binding.txtPreco.getText().toString()) );
                 item.setValor_total( item.getPreco() * item.getQuantidade() );
                 item.setId_lista( listaVM.getId() );
 
@@ -66,7 +58,7 @@ public class CadastroItemFragment extends Fragment {
             }
         });
 
-        buttonCancelarItem.setOnClickListener(new View.OnClickListener() {
+        binding.btnCancelarItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 voltarItens();
