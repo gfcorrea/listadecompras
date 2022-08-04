@@ -18,13 +18,13 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:shadowColor="@color/black"
-            android:text="CADASTRO DE LISTA"
+            android:text="Cadastro de Lista"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 

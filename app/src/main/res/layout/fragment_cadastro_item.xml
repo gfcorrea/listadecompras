@@ -19,12 +19,12 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="CADASTRO DE ITEM"
+            android:text="Cadastro de Item"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
