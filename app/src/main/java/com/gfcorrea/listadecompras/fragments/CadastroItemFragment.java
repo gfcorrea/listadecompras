@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.model.ItemListaModel;
@@ -43,6 +44,7 @@ public class CadastroItemFragment extends Fragment {
         binding.btnSalvarItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!validaCampos()) { return; }
 
                 ItemListaModel item = new ItemListaModel();
                 item.setProduto( binding.txtProduto.getText().toString() );
@@ -76,4 +78,32 @@ public class CadastroItemFragment extends Fragment {
         fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
         fragmentTransaction.commit();
     }
+
+
+    public boolean validaCampos() {
+        Boolean retorno;
+
+        retorno = binding.txtProduto.getText().toString().matches("[a-zA-Z0-9]{3,}.*");
+
+        if (!retorno) {
+            Toast.makeText(getContext(), "Nome do Produto inválido, por favor digite um nome com pelo menos 3 caracteres", Toast.LENGTH_SHORT).show();
+            return retorno;
+        }
+
+        retorno = binding.txtQuantidade.getText().toString().matches("[0-9]+\\.{0,}[0-9]{0,}");
+        if (!retorno) {
+            Toast.makeText(getContext(), "Quantidade inválida", Toast.LENGTH_SHORT).show();
+            return retorno;
+        }
+
+        retorno = binding.txtPreco.getText().toString().matches("[0-9]+\\.{0,}[0-9]{0,}");
+        if (!retorno) {
+            Toast.makeText(getContext(), "Preço inválido", Toast.LENGTH_SHORT).show();
+            return retorno;
+        }
+
+        return retorno;
+    }
+
+
 }

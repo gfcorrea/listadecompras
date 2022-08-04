@@ -5,6 +5,8 @@ import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.model.ListaModel;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ListaRepository {
 
@@ -15,12 +17,14 @@ public class ListaRepository {
     }
 
     public void inserir(ListaModel listaModel){
-        AppDatabase db = AppDatabase.getInstance();
-        ListaDao listaDao = db.listaDao();
 
-        listaModel.setValor_total(0.0);
+            AppDatabase db = AppDatabase.getInstance();
+            ListaDao listaDao = db.listaDao();
 
-        listaDao.insertAll(listaModel);
+            listaModel.setValor_total(0.0);
+
+            listaDao.insertAll(listaModel);
+
     }
 
     public void excluirID(int id){
@@ -40,5 +44,7 @@ public class ListaRepository {
         ListaDao listaDao = AppDatabase.getInstance().listaDao();
         return listaDao.pegaValorTotal();
     }
+
+
 
 }

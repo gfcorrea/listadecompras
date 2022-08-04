@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
 @Entity(tableName = "lista")
 public class ListaModel {
     @PrimaryKey(autoGenerate = true)
