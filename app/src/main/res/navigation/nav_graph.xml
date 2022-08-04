@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/cadastroListaFragment"
+        android:name="com.gfcorrea.listadecompras.fragments.CadastroListaFragment"
+        android:label="fragment_cadastro_lista"
+        tools:layout="@layout/fragment_cadastro_lista" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.gfcorrea.listadecompras.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_cadastroListaFragment"
+            app:destination="@id/cadastroListaFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+</navigation>
