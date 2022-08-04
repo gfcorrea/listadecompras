@@ -6,7 +6,6 @@
 </p>
 
 
-
 ## :memo: Descrição do Projeto
 Este é um projeto simples, feito durante meu aprendizado de Android Studio.<br>
 Com este App voce poderá criar suas listaModels de compras e enquanto vai ao mercado pode ir marcando o que você já comprou.<br>
