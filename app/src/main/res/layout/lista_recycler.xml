@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:layout_marginTop="4dp"
-    app:cardElevation="10dp">
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -65,9 +65,6 @@ public class HomeFragment extends Fragment {
 
         binding.RecyclerViewLista.setAdapter(adaptador);
 
-        binding.RecyclerViewLista.addItemDecoration(
-                new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
-
         listaViewModel.atualizaTotal();
 
         binding.btnNovaLista.setOnClickListener(new View.OnClickListener() {

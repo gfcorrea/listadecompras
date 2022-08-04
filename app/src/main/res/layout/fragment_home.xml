@@ -49,9 +49,11 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="8dp"
+        android:layout_margin="2dp"
+        android:elevation="8dp"
+        android:padding="4dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btnNovaLista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,10 +63,8 @@
             android:id="@+id/RecyclerViewLista"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
+            android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
             android:layout_marginBottom="0dp"
             android:backgroundTint="#80FFFFFF"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -80,8 +80,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnNovaLista"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:elevation="8dp">
 
             <TextView
                 android:id="@+id/textViewNListasFixo"
