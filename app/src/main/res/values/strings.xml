@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Lista de Compras</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonSalvar">Salvar</string>
+    <string name="buttonCancelar">Cancelar</string>
 </resources>

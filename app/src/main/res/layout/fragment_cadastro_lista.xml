@@ -58,19 +58,37 @@
 
         <Button
             android:id="@+id/btnSalvarLista"
-
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Salvar" />
+            android:gravity="start|center_vertical"
+            android:singleLine="true"
+            android:text="@string/buttonSalvar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:strokeWidth="0.5sp"
+            tools:ignore="RtlCompat" />
+
 
         <Button
-
             android:id="@+id/btnCancelarLista"
-            android:layout_margin="8dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar" />
+            android:layout_margin="8dp"
+            android:gravity="start|center_vertical"
+            android:singleLine="true"
+            android:text="@string/buttonCancelar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:strokeWidth="0.5sp"
+            tools:ignore="RtlCompat" />
+
+
+
     </LinearLayout>
 
 </LinearLayout>

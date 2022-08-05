@@ -95,21 +95,37 @@
         android:orientation="vertical">
 
         <Button
-            style="@style/ShapeAppearanceOverlay.Material3.Button"
             android:id="@+id/btnSalvarItem"
-            android:layout_margin="8dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salvar" />
+            android:layout_margin="8dp"
+            android:gravity="start|center_vertical"
+            android:singleLine="true"
+            android:text="@string/buttonSalvar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:strokeWidth="0.5sp"
+            tools:ignore="RtlCompat" />
+
 
         <Button
-            style="@style/ShapeAppearanceOverlay.Material3.Button"
             android:id="@+id/btnCancelarItem"
-            android:layout_margin="8dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="CANCELAR" />
+            android:layout_margin="8dp"
+            android:gravity="start|center_vertical"
+            android:singleLine="true"
+            android:text="@string/buttonCancelar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:strokeWidth="0.5sp"
+            tools:ignore="RtlCompat" />
+
+
     </LinearLayout>
 
 </LinearLayout>
