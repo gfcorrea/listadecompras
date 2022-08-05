@@ -63,8 +63,8 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
 
         textViewItemProduto.setText( lista.get(position).getProduto());
         textViewItemQuantidade.setText( "Qtd: " + String.valueOf(lista.get(position).getQuantidade()));
-        textViewItemValor.setText( "Vlr: R$ " + precision.format( lista.get(position).getPreco() )  );
-        textViewItemTotal.setText( "Total: R$ " + precision.format( lista.get(position).getValor_total() )  );
+        textViewItemValor.setText( "Vlr: R$ " + precision.format( lista.get(position).getPreco() ) + " "  );
+        textViewItemTotal.setText( "Total: R$ " + precision.format( lista.get(position).getValor_total() ) + " "  );
         checkBoxMarcado.setChecked(lista.get(position).isMarcado());
 
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {

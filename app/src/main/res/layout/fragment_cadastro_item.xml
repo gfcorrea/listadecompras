@@ -29,40 +29,63 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp">
+        android:layout_margin="8dp"
+        android:hint="Produto"
+        app:helperText="Required*"
+        app:helperTextTextColor="@android:color/holo_red_dark"
+        app:endIconMode="clear_text"
+        app:counterEnabled="true"
+        app:counterMaxLength="100"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Produto" />
+            android:maxLength="100"
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp">
+        android:layout_margin="8dp"
+        app:helperText="Required*"
+        app:helperTextTextColor="@android:color/holo_red_dark"
+        app:endIconMode="clear_text"
+        android:hint="Quantidade"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtQuantidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Quantidade"
-            android:numeric="decimal" />
+            android:inputType="numberDecimal"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:helperText="Required*"
+        app:helperTextTextColor="@android:color/holo_red_dark"
+        app:endIconMode="clear_text"
+        android:hint="Preço"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtPreco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Preço"
-            android:numeric="decimal" />
+            android:inputType="numberDecimal"
+
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -72,13 +95,17 @@
         android:orientation="vertical">
 
         <Button
+            style="@style/ShapeAppearanceOverlay.Material3.Button"
             android:id="@+id/btnSalvarItem"
+            android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar" />
 
         <Button
+            style="@style/ShapeAppearanceOverlay.Material3.Button"
             android:id="@+id/btnCancelarItem"
+            android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
