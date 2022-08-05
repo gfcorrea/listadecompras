@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,86 +9,109 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:cardBackgroundColor="@color/purple_200">
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView4"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:text="Cadastro de Lista"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:shadowColor="@color/black"
-            android:text="Cadastro de Lista"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="Nome"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+
+                app:endIconMode="clear_text"
+                app:helperText="Required*"
+                app:helperTextTextColor="@android:color/holo_red_light">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNomeLista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="100" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
+    <Button
+        android:id="@+id/btnSalvarLista"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="Nome"
-        app:helperText="Required*"
-        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="start|center_vertical"
+        android:singleLine="true"
+        android:text="@string/buttonSalvar"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelarLista"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeWidth="0.5sp"
+        tools:ignore="RtlCompat" />
 
-        app:endIconMode="clear_text"
-        app:counterEnabled="true"
-        app:counterMaxLength="100"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtNomeLista"
-            android:maxLength="100"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/btnCancelarLista"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="start|center_vertical"
+        android:singleLine="true"
+        android:text="@string/buttonCancelar"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeWidth="0.5sp"
+        tools:ignore="RtlCompat" />
 
-        <Button
-            android:id="@+id/btnSalvarLista"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="start|center_vertical"
-            android:singleLine="true"
-            android:text="@string/buttonSalvar"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            app:strokeWidth="0.5sp"
-            tools:ignore="RtlCompat" />
-
-
-        <Button
-            android:id="@+id/btnCancelarLista"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="start|center_vertical"
-            android:singleLine="true"
-            android:text="@string/buttonCancelar"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            app:strokeWidth="0.5sp"
-            tools:ignore="RtlCompat" />
-
-
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
