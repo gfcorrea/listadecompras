@@ -9,7 +9,7 @@
 ## :memo: Descrição do Projeto
 Este é um projeto simples, feito durante meu aprendizado de Android Studio.<br>
 Com este App voce poderá criar suas listaModels de compras e enquanto vai ao mercado pode ir marcando o que você já comprou.<br>
-A ideia é bastante simples mas é um app que abrange bastante do básico do desenvolvimento em Android.<br>
+A ideia é bastante simples mas é um app que abrange bastante do básico de desenvolvimento em Android.<br>
 
 
 
@@ -22,8 +22,8 @@ A ideia é bastante simples mas é um app que abrange bastante do básico do des
 ## :camera: ScreenShots
 
 <p align="center">
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/183078978-7ab56ffd-0c1d-444d-a395-064222bccc0f.png"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/183078987-5d9bf6ce-c3c2-412f-b131-24e11a03a6fd.png"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/183078993-5fc6ef30-594f-4175-bcd6-26e562999f4b.png"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/183078998-1f81fb52-c39a-454a-b115-f651dc88d52e.png"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/183124038-7d297130-7c83-47a1-adc3-6edfe84dc88a.png"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/183124047-0e8a28cb-4468-424e-8e93-785fb6e7ab7a.png"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/183124057-49e33c50-49be-4474-bd7d-f8b143836535.png"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/183124066-9719df0f-6a47-49c3-9192-50ae84bdbe53.png"/>
 </p>
