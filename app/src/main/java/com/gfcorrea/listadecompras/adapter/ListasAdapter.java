@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.fragments.ItensFragment;
@@ -85,16 +86,12 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
         //Implementa View.OnClickListener
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
             listaViewModel.setId(listaModel.get( getAdapterPosition()).getId());
             listaViewModel.setNome(listaModel.get( getAdapterPosition()).getNome());
 
-            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Navigation.findNavController(view).navigate(R.id.navigateToItensFragment);
 
-            ItensFragment fragment = new ItensFragment();
-            fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-            fragmentTransaction.commit();
         }
 
     }

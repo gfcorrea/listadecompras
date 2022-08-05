@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.view.LayoutInflater;
@@ -84,24 +85,15 @@ public class ItensFragment extends Fragment {
 
                 listaViewModel.atualizaTotal();
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Navigation.findNavController(view).navigate(R.id.navigateToHomeFromItensFragment);
 
-                HomeFragment fragment = new HomeFragment();
-                fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-                fragmentTransaction.commit();
             }
         });
 
         binding.btnNovoItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                CadastroItemFragment fragment = new CadastroItemFragment();
-                fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-                fragmentTransaction.commit();
+                Navigation.findNavController(view).navigate(R.id.navigateToCadastroItemFragment);
             }
         });
 

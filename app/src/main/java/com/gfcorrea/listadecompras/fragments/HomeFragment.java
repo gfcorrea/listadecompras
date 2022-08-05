@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.view.LayoutInflater;
@@ -70,12 +71,7 @@ public class HomeFragment extends Fragment {
         binding.btnNovaLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                CadastroListaFragment fragment = new CadastroListaFragment();
-                fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-                fragmentTransaction.commit();
+                Navigation.findNavController(view).navigate(R.id.navigateToCadastroListaFragment);
             }
         });
 

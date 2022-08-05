@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,27 +49,22 @@ public class CadastroListaFragment extends Fragment {
                 ListaRepository listaRepository = new ListaRepository();
                 listaRepository.inserir(listaModel);
 
-                voltarHome();
+                voltarHome(view);
             }
         });
 
         binding.btnCancelarLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voltarHome();
+                voltarHome(view);
             }
         });
 
         return view;
     }
 
-    public void voltarHome() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        HomeFragment fragment = new HomeFragment();
-        fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-        fragmentTransaction.commit();
+    public void voltarHome(View view) {
+        Navigation.findNavController(view).navigate(R.id.navigateToHomeFromCadastroListaFragment);
     }
 
     public boolean validaCampos() {

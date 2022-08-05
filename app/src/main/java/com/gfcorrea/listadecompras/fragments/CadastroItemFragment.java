@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,27 +57,22 @@ public class CadastroItemFragment extends Fragment {
                 ItemRepository controller = new ItemRepository();
                 controller.inserir(item);
 
-                voltarItens();
+                voltarItens(view);
             }
         });
 
         binding.btnCancelarItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voltarItens();
+                voltarItens(view);
             }
         });
 
         return v;
     }
 
-    public void voltarItens(){
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        ItensFragment fragment = new ItensFragment();
-        fragmentTransaction.replace(R.id.fragmentContainerView2, fragment);
-        fragmentTransaction.commit();
+    public void voltarItens(View view){
+        Navigation.findNavController(view).navigate(R.id.navigateToItensFragmentoFromCadastroItemFragment);
     }
 
 

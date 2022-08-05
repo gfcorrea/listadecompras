@@ -2,22 +2,61 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/cadastroListaFragment"
         android:name="com.gfcorrea.listadecompras.fragments.CadastroListaFragment"
         android:label="fragment_cadastro_lista"
-        tools:layout="@layout/fragment_cadastro_lista" />
+        tools:layout="@layout/fragment_cadastro_lista" >
+        <action
+            android:id="@+id/navigateToHomeFromCadastroListaFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.gfcorrea.listadecompras.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_cadastroListaFragment"
+            android:id="@+id/navigateToCadastroListaFragment"
             app:destination="@id/cadastroListaFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/navigateToItensFragment"
+            app:destination="@id/itensFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/itensFragment"
+        android:name="com.gfcorrea.listadecompras.fragments.ItensFragment"
+        android:label="fragment_itens"
+        tools:layout="@layout/fragment_itens" >
+        <action
+            android:id="@+id/navigateToHomeFromItensFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/navigateToCadastroItemFragment"
+            app:destination="@id/cadastroItemFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastroItemFragment"
+        android:name="com.gfcorrea.listadecompras.fragments.CadastroItemFragment"
+        android:label="fragment_cadastro_item"
+        tools:layout="@layout/fragment_cadastro_item" >
+        <action
+            android:id="@+id/navigateToItensFragmentoFromCadastroItemFragment"
+            app:destination="@id/itensFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 </navigation>
