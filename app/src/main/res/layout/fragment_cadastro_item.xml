@@ -108,7 +108,7 @@
             android:text="Cadastro de Item"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,8 @@
             android:text="@string/buttonSalvar"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="12sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp"
             app:strokeWidth="0.5sp"
             tools:ignore="RtlCompat" />
 
@@ -152,7 +153,8 @@
             android:text="@string/buttonCancelar"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="12sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp"
             app:strokeWidth="0.5sp"
             tools:ignore="RtlCompat" />
     </LinearLayout>
