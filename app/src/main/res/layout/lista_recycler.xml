@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Nome"
             android:textSize="12sp"
@@ -48,11 +48,11 @@
             android:id="@+id/textViewTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:text="Total"
-            android:textSize="12sp"
+            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textViewNome" />
+            app:layout_constraintStart_toStartOf="@+id/textViewNome" />
 
         <ImageView
             android:id="@+id/buttonExcluirLista"

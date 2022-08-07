@@ -53,7 +53,7 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         double total =  listaModel.get(position).getValor_total();
 
         tNome.setText(listaModel.get(position).getNome());
-        tTotal.setText( "R$ "+ precision.format(total) );
+        tTotal.setText( "Total: R$ "+ precision.format(total) );
 
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
