@@ -12,6 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/lblDateLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Total"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lblNomeLista" />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_launcher_icon"
             android:layout_width="wrap_content"
@@ -32,7 +42,7 @@
             app:strokeColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/textViewNome"
+            android:id="@+id/lblNomeLista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -45,14 +55,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewTotal"
+            android:id="@+id/lblTotalLista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Total"
             android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textViewNome" />
+            app:layout_constraintStart_toStartOf="@+id/lblNomeLista" />
 
         <ImageView
             android:id="@+id/buttonExcluirLista"

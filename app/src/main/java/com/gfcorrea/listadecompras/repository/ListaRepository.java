@@ -22,9 +22,9 @@ public class ListaRepository {
             ListaDao listaDao = db.listaDao();
 
             listaModel.setValor_total(0.0);
+            listaModel.setData(System.currentTimeMillis());
 
             listaDao.insertAll(listaModel);
-
     }
 
     public void excluirID(int id){

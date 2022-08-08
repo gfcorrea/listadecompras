@@ -9,22 +9,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.model.ListaModel;
 import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyy");
     private List<ListaModel> listaModel;
     private ListaViewModel listaViewModel;
 
@@ -44,16 +42,18 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
     @Override
     public void onBindViewHolder(@NonNull ListaViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        TextView tNome  = holder.itemView.findViewById(R.id.textViewNome);
-        TextView tTotal = holder.itemView.findViewById(R.id.textViewTotal);
+        TextView lblNomeLista  = holder.itemView.findViewById(R.id.lblNomeLista);
+        TextView lblTotalLista = holder.itemView.findViewById(R.id.lblTotalLista);
+        TextView lblDateLista  = holder.itemView.findViewById(R.id.lblDateLista);
         ImageView buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
         DecimalFormat precision = new DecimalFormat("0.00");
 
         int id       =  listaModel.get(position).getId();
         double total =  listaModel.get(position).getValor_total();
 
-        tNome.setText(listaModel.get(position).getNome());
-        tTotal.setText( "Total: R$ "+ precision.format(total) );
+        lblNomeLista.setText(listaModel.get(position).getNome());
+        lblTotalLista.setText( "Total: R$ "+ precision.format(total) );
+        lblDateLista.setText( simpleDateFormat.format(listaModel.get(position).getData()) );
 
         buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")

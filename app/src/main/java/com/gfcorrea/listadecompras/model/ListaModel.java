@@ -14,7 +14,7 @@ public class ListaModel {
     private String nome;
 
     @ColumnInfo(name = "data")
-    private String data;
+    private long data;
 
     @ColumnInfo(name = "valor")
     private double valor_total;
@@ -36,11 +36,11 @@ public class ListaModel {
         this.nome = nome;
     }
 
-    public String getData() {
+    public long getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(long data) {
         this.data = data;
     }
 

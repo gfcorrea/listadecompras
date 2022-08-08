@@ -18,7 +18,7 @@ import com.gfcorrea.listadecompras.model.ListaModel;
 
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "listadecompras.bd";
+    private static final String DATABASE_NAME = "listadecompras";
     private static AppDatabase instance;
     private static Context contexto;
 
