@@ -22,8 +22,8 @@ A ideia é bastante simples mas é um app que abrange bastante do básico de des
 ## :camera: ScreenShots
 
 <p align="center">
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/183310134-123de4fb-fe1a-447d-9cc7-83a3a9904fc3.png"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/183538954-8c523cb6-a5f7-43c1-88eb-9a1ca97b5e30.png"/>
 <img width="200px" src="https://user-images.githubusercontent.com/99930836/183307299-3c4ff0b1-5527-444f-bdcb-336dcda36087.png"/>
-<img width="200px" src="https://user-images.githubusercontent.com/99930836/183310136-90ef8a1f-d527-4439-93c8-ac9f96e56a5c.png"/>
+<img width="200px" src="https://user-images.githubusercontent.com/99930836/183538961-7b7be250-85d4-46bf-a754-12392d2e0e9b.png"/>
 <img width="200px" src="https://user-images.githubusercontent.com/99930836/183307367-da180b1e-17c7-494e-ad4d-1dd610d59083.png"/>
 </p>
