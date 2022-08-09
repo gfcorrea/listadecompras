@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c2b5bb622ed241980444cbf79d071e9e",
+    "identityHash": "1dfdb7d0f89f4dc806ec3d3a854fbab1",
     "entities": [
       {
         "tableName": "lista",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `data` TEXT, `valor` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `data` INTEGER NOT NULL, `valor` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -23,8 +23,8 @@
           {
             "fieldPath": "data",
             "columnName": "data",
-            "affinity": "TEXT",
-            "notNull": false
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
             "fieldPath": "valor_total",
@@ -108,7 +108,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c2b5bb622ed241980444cbf79d071e9e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1dfdb7d0f89f4dc806ec3d3a854fbab1')"
     ]
   }
 }

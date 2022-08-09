@@ -7,19 +7,25 @@ import com.gfcorrea.listadecompras.model.ListaModel;
 import com.gfcorrea.listadecompras.repository.ListaRepository;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ListaViewModel extends ViewModel {
 
-    DecimalFormat precision = new DecimalFormat("0.00");
-    List<ListaModel> listaModel;
-    private int id;
-    private String nome;
+    private DecimalFormat precision = new DecimalFormat("0.00");
+
+    private List<ListaModel> listaModel;
+    private ListaModel lista = new ListaModel();
+
     private MutableLiveData<String> numListas;
     private ListaRepository listaRepository = new ListaRepository();
     private MutableLiveData<String> valorTotal;
 
-    public ListaViewModel() {  }
+
+
+    public ListaViewModel() {
+    }
 
     public MutableLiveData<String> getValorTotal() {
         if (valorTotal == null) {
@@ -36,31 +42,31 @@ public class ListaViewModel extends ViewModel {
     }
 
     public int getId() {
-        return id;
+        return lista.getId();
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.lista.setId(id);
     }
 
     public String getNome() {
-        return nome;
+        return lista.getNome();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.lista.setNome(nome);
     }
 
-    public List<ListaModel> getAll(){
+    public List<ListaModel> getAll() {
         this.listaModel = listaRepository.getAll();
         return listaModel;
     }
 
-    public void deleteByID(int id){
+    public void deleteByID(int id) {
         listaRepository.excluirID(id);
     }
 
-    public void atualizaTotal(){
+    public void atualizaTotal() {
         getValorTotal().setValue("R$ " + precision.format(listaRepository.pegaValorTotal()));
         this.numListas.setValue(String.valueOf(listaModel.size()));
     }
