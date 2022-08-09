@@ -5,8 +5,7 @@ import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.model.ListaModel;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class ListaRepository {
 

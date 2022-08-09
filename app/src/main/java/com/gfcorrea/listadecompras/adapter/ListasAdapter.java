@@ -9,13 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gfcorrea.listadecompras.fragments.ItensFragment;
 import com.gfcorrea.listadecompras.R;
 import com.gfcorrea.listadecompras.model.ListaModel;
 import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;

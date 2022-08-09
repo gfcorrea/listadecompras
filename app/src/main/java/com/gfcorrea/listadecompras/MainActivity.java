@@ -14,9 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         AppDatabase.setContexto(getApplicationContext());
-
-        //ListaVM vmodel = new ViewModelProvider(this).get(ListaVM.class);
-        //vmodel.atualizaTotal();
     }
 
 }
