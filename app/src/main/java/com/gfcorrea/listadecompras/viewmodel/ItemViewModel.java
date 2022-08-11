@@ -13,9 +13,10 @@ import java.util.concurrent.Executors;
 
 
 public class ItemViewModel extends ViewModel {
-
+    //Utilizado para passar a lista ao adapter e atualizar a tela pelo observer.
     private MutableLiveData<List<ItemListaModel>> itemListaModel;
 
+    //Utilizado para atualizar as totalizações na tela inicial.
     private MutableLiveData<String> valorTotal;
     private MutableLiveData<String> numItens;
 
@@ -23,6 +24,7 @@ public class ItemViewModel extends ViewModel {
     private DecimalFormat precision = new DecimalFormat("0.00");
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    //ID da lista selecionada na primeira tela.
     private int id_lista;
 
     public MutableLiveData<List<ItemListaModel>> getItemListaModel(){
