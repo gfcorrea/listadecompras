@@ -12,25 +12,13 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="48dp"
+        android:elevation="8dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/purple_200" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="60dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TextViewTituloItens"
@@ -38,12 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="48dp"
+        android:elevation="8dp"
         android:text="Nome da Lista"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cardView4"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/buttonVoltarItens"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,9 +45,10 @@
         android:layout_marginBottom="8dp"
         android:clickable="true"
         android:contentDescription="Adicionar novo item a esta listaModel."
-        android:elevation="8dp"
+        android:elevation="16dp"
         android:src="@drawable/ic_add_24"
         app:backgroundTint="@color/cor_tema"
+        app:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -66,6 +56,7 @@
         android:id="@+id/buttonVoltarItens"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:elevation="8dp"
         android:scaleType="fitXY"
         android:src="@drawable/voltar"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,41 +64,38 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
+        style="@style/Widget.Material3.CardView.Outlined"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="8dp"
-        android:elevation="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:cardMaxElevation="8dp"
+        android:layout_margin="8dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
         app:layout_constraintBottom_toTopOf="@+id/btnNovoItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView4">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerViewItens"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_margin="4dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        style="@style/Widget.Material3.CardView.Outlined"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:cardMaxElevation="8dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnNovoItem"
         app:layout_constraintStart_toStartOf="parent"
