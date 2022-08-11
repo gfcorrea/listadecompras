@@ -27,7 +27,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static synchronized AppDatabase getInstance(){
         if(instance == null){
-            instance = Room.databaseBuilder(contexto, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().fallbackToDestructiveMigration().build();
+            instance = Room.databaseBuilder(contexto, AppDatabase.class, DATABASE_NAME).build();
         }
         return instance;
     }

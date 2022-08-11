@@ -16,9 +16,13 @@ import com.gfcorrea.listadecompras.repository.ListaRepository;
 import com.gfcorrea.listadecompras.databinding.FragmentCadastroListaBinding;
 import com.gfcorrea.listadecompras.model.ListaModel;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 public class CadastroListaFragment extends Fragment {
     private FragmentCadastroListaBinding binding;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public CadastroListaFragment() {
         // Required empty public constructor
@@ -41,11 +45,13 @@ public class CadastroListaFragment extends Fragment {
             public void onClick(View view) {
                 if (!validaCampos()) { return; }
 
-                ListaModel listaModel = new ListaModel();
-                listaModel.setNome(binding.txtNomeLista.getText().toString());
+                executor.execute(()->{
+                    ListaModel listaModel = new ListaModel();
+                    listaModel.setNome(binding.txtNomeLista.getText().toString());
 
-                ListaRepository listaRepository = new ListaRepository();
-                listaRepository.inserir(listaModel);
+                    ListaRepository listaRepository = new ListaRepository();
+                    listaRepository.inserir(listaModel);
+                });
 
                 voltarHome(view);
             }

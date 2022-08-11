@@ -3,24 +3,34 @@ package com.gfcorrea.listadecompras.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.gfcorrea.listadecompras.dao.ItemListaDao;
-import com.gfcorrea.listadecompras.database.AppDatabase;
 import com.gfcorrea.listadecompras.model.ItemListaModel;
-
+import com.gfcorrea.listadecompras.repository.ItemRepository;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class ItemViewModel extends ViewModel {
 
+    private MutableLiveData<List<ItemListaModel>> itemListaModel;
+
     private MutableLiveData<String> valorTotal;
     private MutableLiveData<String> numItens;
 
+    ItemRepository itemRepository = new ItemRepository();
     private DecimalFormat precision = new DecimalFormat("0.00");
-    private List<ItemListaModel> lista;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+
     private int id_lista;
 
+    public MutableLiveData<List<ItemListaModel>> getItemListaModel(){
+        if (itemListaModel == null) {
+            itemListaModel = new MutableLiveData<List<ItemListaModel>>();
+        }
+        return itemListaModel;
+    }
 
     public MutableLiveData<String> getTotalGeral() {
         if (valorTotal == null) {
@@ -36,11 +46,13 @@ public class ItemViewModel extends ViewModel {
         return numItens;
     }
 
-    public void atualizaTotal(){
-        ItemListaDao itemListaDao = AppDatabase.getInstance().itemListaDao();
-        getTotalGeral().setValue( "R$ " + precision.format(itemListaDao.pegaTotalLista(this.getId_lista())) );
+    public void atualizaLista(){
+        this.getItemListaModel().postValue(itemRepository.itensDaListaID( this.getId_lista() ));
+     }
 
-        this.numItens.setValue(String.valueOf(lista.size()));
+    public void atualizaTotal(){
+        getTotalGeral().postValue( "R$ " + precision.format(itemRepository.pegaTotalLista(this.getId_lista())) );
+        getNumItens().postValue(String.valueOf(getItemListaModel().getValue().size()));
     }
 
     public int getId_lista() {
@@ -52,10 +64,17 @@ public class ItemViewModel extends ViewModel {
     }
 
     public List<ItemListaModel> getLista() {
-        return lista;
+        return getItemListaModel().getValue();
     }
 
     public void setLista(List<ItemListaModel> lista) {
-        this.lista = lista;
+        this.getItemListaModel().postValue(lista);
+    }
+
+    public void deleteByID(long id){
+        executor.execute(()->{
+            itemRepository.apagarID(id);
+            atualizaTotal();
+        });
     }
 }

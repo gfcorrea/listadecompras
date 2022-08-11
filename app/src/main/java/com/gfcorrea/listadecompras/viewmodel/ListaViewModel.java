@@ -7,25 +7,29 @@ import com.gfcorrea.listadecompras.model.ListaModel;
 import com.gfcorrea.listadecompras.repository.ListaRepository;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ListaViewModel extends ViewModel {
 
-    private DecimalFormat precision = new DecimalFormat("0.00");
+    //Utilizado para passar a lista ao adapter e atualizar a tela pelo observer.
+    private MutableLiveData<List<ListaModel>> listaModel;
 
-    private List<ListaModel> listaModel;
+    //Utilizado para identificar qual foi a lista selecionada para carregar os itens.
     private ListaModel lista = new ListaModel();
 
+    //Utilizado para atualizar as totalizações na tela inicial.
     private MutableLiveData<String> numListas;
-    private ListaRepository listaRepository = new ListaRepository();
     private MutableLiveData<String> valorTotal;
 
-
+    private ListaRepository listaRepository = new ListaRepository();
+    private DecimalFormat precision = new DecimalFormat("0.00");
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public ListaViewModel() {
     }
+
 
     public MutableLiveData<String> getValorTotal() {
         if (valorTotal == null) {
@@ -39,6 +43,26 @@ public class ListaViewModel extends ViewModel {
             numListas = new MutableLiveData<String>();
         }
         return numListas;
+    }
+
+    public MutableLiveData<List<ListaModel>> getListaModel() {
+        if (listaModel == null) {
+            listaModel = new MutableLiveData<List<ListaModel>>();
+        }
+        return listaModel;
+    }
+
+    public void atualizaLista() {
+        this.getListaModel().postValue(listaRepository.getAll());
+    }
+
+    public void atualizaTotal() {
+        this.getValorTotal().postValue("R$ " + precision.format(listaRepository.pegaValorTotal()));
+        this.getNumListas().postValue(String.valueOf(getListaModel().getValue().size()));
+    }
+
+    public List<ListaModel> getAll() {
+        return this.getListaModel().getValue();
     }
 
     public int getId() {
@@ -57,18 +81,14 @@ public class ListaViewModel extends ViewModel {
         this.lista.setNome(nome);
     }
 
-    public List<ListaModel> getAll() {
-        this.listaModel = listaRepository.getAll();
-        return listaModel;
-    }
 
+    //Rever utilidade.
     public void deleteByID(int id) {
-        listaRepository.excluirID(id);
-    }
+        executor.execute(() -> {
+            listaRepository.excluirID(id);
+            atualizaTotal();
+        });
 
-    public void atualizaTotal() {
-        getValorTotal().setValue("R$ " + precision.format(listaRepository.pegaValorTotal()));
-        this.numListas.setValue(String.valueOf(listaModel.size()));
     }
 
 }

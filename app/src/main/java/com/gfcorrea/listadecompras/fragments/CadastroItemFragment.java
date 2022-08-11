@@ -18,10 +18,13 @@ import com.gfcorrea.listadecompras.repository.ItemRepository;
 import com.gfcorrea.listadecompras.databinding.FragmentCadastroItemBinding;
 import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class CadastroItemFragment extends Fragment {
     private FragmentCadastroItemBinding binding;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public CadastroItemFragment() {
         // Required empty public constructor
@@ -45,15 +48,17 @@ public class CadastroItemFragment extends Fragment {
             public void onClick(View view) {
                 if (!validaCampos()) { return; }
 
-                ItemListaModel item = new ItemListaModel();
-                item.setProduto( binding.txtProduto.getText().toString() );
-                item.setQuantidade( Double.parseDouble(binding.txtQuantidade.getText().toString()) );
-                item.setPreco( Double.parseDouble(binding.txtPreco.getText().toString()) );
-                item.setValor_total( item.getPreco() * item.getQuantidade() );
-                item.setId_lista( listaViewModel.getId() );
+                executor.execute(()->{
+                    ItemListaModel item = new ItemListaModel();
+                    item.setProduto( binding.txtProduto.getText().toString() );
+                    item.setQuantidade( Double.parseDouble(binding.txtQuantidade.getText().toString()) );
+                    item.setPreco( Double.parseDouble(binding.txtPreco.getText().toString()) );
+                    item.setValor_total( item.getPreco() * item.getQuantidade() );
+                    item.setId_lista( listaViewModel.getId() );
 
-                ItemRepository controller = new ItemRepository();
-                controller.inserir(item);
+                    ItemRepository itemRepository = new ItemRepository();
+                    itemRepository.inserir(item);
+                });
 
                 voltarItens(view);
             }
@@ -72,7 +77,6 @@ public class CadastroItemFragment extends Fragment {
     public void voltarItens(View view){
         Navigation.findNavController(view).navigate(R.id.navigateToItensFragmentoFromCadastroItemFragment);
     }
-
 
     public boolean validaCampos() {
         Boolean retorno;

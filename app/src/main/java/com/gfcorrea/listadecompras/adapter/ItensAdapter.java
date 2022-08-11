@@ -19,12 +19,14 @@ import com.gfcorrea.listadecompras.viewmodel.ItemViewModel;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHolder> {
 
     private List<ItemListaModel> lista;
     private ItemViewModel itemViewModel;
-
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public ItensAdapter(ItemViewModel itemViewModel) {
         this.itemViewModel = itemViewModel;
@@ -35,9 +37,8 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
     @Override
     public ItensViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.itens_recycler, parent, false);
-        ItensAdapter.ItensViewHolder mvh = new ItensAdapter.ItensViewHolder(itemView);
 
-        return mvh;
+        return new ItensViewHolder(itemView);
     }
 
     @Override
@@ -45,6 +46,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         return lista.size();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ItensViewHolder holder, @SuppressLint("RecyclerView") int position) {
         TextView textViewItemProduto, textViewItemQuantidade, textViewItemValor, textViewItemTotal;
@@ -59,25 +61,20 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
 
         ImageView buttonExcluirItem = holder.itemView.findViewById(R.id.buttonExcluirItem);
 
-        String id    =  String.valueOf(lista.get(position).getId());
-
-        textViewItemProduto.setText( lista.get(position).getProduto());
-        textViewItemQuantidade.setText( "Qtd: " + String.valueOf(lista.get(position).getQuantidade()));
-        textViewItemValor.setText( "Vlr: R$ " + precision.format( lista.get(position).getPreco() ) + " "  );
-        textViewItemTotal.setText( "Total: R$ " + precision.format( lista.get(position).getValor_total() ) + " "  );
+        textViewItemProduto.setText(lista.get(position).getProduto());
+        textViewItemQuantidade.setText("Qtd: " + lista.get(position).getQuantidade());
+        textViewItemValor.setText("Vlr: R$ " + precision.format(lista.get(position).getPreco()) + " ");
+        textViewItemTotal.setText("Total: R$ " + precision.format(lista.get(position).getValor_total()) + " ");
         checkBoxMarcado.setChecked(lista.get(position).isMarcado());
 
         buttonExcluirItem.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-
-                ItemRepository itemRepository = new ItemRepository();
-                itemRepository.apagarID(Integer.parseInt(id));
+                itemViewModel.deleteByID(lista.get(position).getId());
 
                 lista.remove(position);
-                notifyItemRemoved(position);
                 notifyDataSetChanged();
-                itemViewModel.atualizaTotal();
 
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
             }
@@ -85,8 +82,10 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.ItensViewHol
         checkBoxMarcado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ItemRepository itemRepository = new ItemRepository();
-                itemRepository.atualizarMarcacao(lista.get(position).getId(), checkBoxMarcado.isChecked());
+                executor.execute(()->{
+                    ItemRepository itemRepository = new ItemRepository();
+                    itemRepository.atualizarMarcacao(lista.get(position).getId(), checkBoxMarcado.isChecked());
+                });
             }
         });
 

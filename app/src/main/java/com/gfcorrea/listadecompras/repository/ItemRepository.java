@@ -46,4 +46,9 @@ public class ItemRepository {
         itemListaDao.atualizaMarcacao(id, marcado);
     }
 
+    public double pegaTotalLista(int id){
+        AppDatabase db = AppDatabase.getInstance();
+        ItemListaDao itemListaDao = db.itemListaDao();
+        return itemListaDao.pegaTotalLista(id);
+    }
 }
