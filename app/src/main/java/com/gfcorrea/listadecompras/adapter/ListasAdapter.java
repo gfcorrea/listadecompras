@@ -1,30 +1,23 @@
 package com.gfcorrea.listadecompras.adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfcorrea.listadecompras.R;
+import com.gfcorrea.listadecompras.databinding.ListaRecyclerBinding;
 import com.gfcorrea.listadecompras.model.ListaModel;
 import com.gfcorrea.listadecompras.viewmodel.ListaViewModel;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
@@ -33,7 +26,6 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
     private ListaViewModel listaViewModel;
 
     public ListasAdapter(ListaViewModel listaViewModel) {
-        //listaViewModel = new ViewModelProvider(owner).get(ListaViewModel.class);
         this.listaViewModel = listaViewModel;
         this.listaModel = listaViewModel.getAll();
     }
@@ -41,28 +33,24 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
     @NonNull
     @Override
     public ListaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_recycler, parent, false);
-        ListaViewHolder mvh = new ListaViewHolder(itemView);
-
-        return mvh;
+        return new ListaViewHolder(
+                ListaRecyclerBinding.inflate(LayoutInflater.from( parent.getContext() ), parent, false)
+        );
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListaViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        TextView lblNomeLista = holder.itemView.findViewById(R.id.lblNomeLista);
-        TextView lblTotalLista = holder.itemView.findViewById(R.id.lblTotalLista);
-        TextView lblDateLista = holder.itemView.findViewById(R.id.lblDateLista);
-        ImageView buttonExcluirLista = holder.itemView.findViewById(R.id.buttonExcluirLista);
+
         DecimalFormat precision = new DecimalFormat("0.00");
 
         int id = listaModel.get(position).getId();
         double total = listaModel.get(position).getValor_total();
 
-        lblNomeLista.setText(listaModel.get(position).getNome());
-        lblTotalLista.setText("Total: R$ " + precision.format(total));
-        lblDateLista.setText(simpleDateFormat.format(listaModel.get(position).getData()));
+        holder.binding.lblNomeLista.setText(listaModel.get(position).getNome());
+        holder.binding.lblTotalLista.setText("Total: R$ " + precision.format(total));
+        holder.binding.lblDateLista.setText(simpleDateFormat.format(listaModel.get(position).getData()));
 
-        buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
+        holder.binding.buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
@@ -81,9 +69,11 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
     }
 
     public class ListaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ListaRecyclerBinding binding;
 
-        public ListaViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ListaViewHolder(ListaRecyclerBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
             itemView.setOnClickListener(this);
         }
 

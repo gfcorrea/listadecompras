@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/buttonExcluirItem"
+            android:id="@+id/btnExcluirItem"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
             app:srcCompat="@drawable/lixeira" />
 
         <TextView
-            android:id="@+id/textViewItemProduto"
+            android:id="@+id/lblItemProduto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -30,12 +30,12 @@
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonExcluirItem"
-            app:layout_constraintStart_toEndOf="@+id/checkBoxMarcado"
+            app:layout_constraintEnd_toStartOf="@+id/btnExcluirItem"
+            app:layout_constraintStart_toEndOf="@+id/chkMarcado"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewItemValor"
+            android:id="@+id/lblItemValor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -45,11 +45,11 @@
             android:textSize="10sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewItemTotal"
-            app:layout_constraintStart_toEndOf="@+id/textViewItemQuantidade" />
+            app:layout_constraintEnd_toStartOf="@+id/lblItemTotal"
+            app:layout_constraintStart_toEndOf="@+id/lblItemQuantidade" />
 
         <TextView
-            android:id="@+id/textViewItemQuantidade"
+            android:id="@+id/lblItemQuantidade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -59,10 +59,10 @@
             android:textSize="10sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/checkBoxMarcado" />
+            app:layout_constraintStart_toEndOf="@+id/chkMarcado" />
 
         <TextView
-            android:id="@+id/textViewItemTotal"
+            android:id="@+id/lblItemTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -71,10 +71,10 @@
             android:textSize="10sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textViewItemProduto" />
+            app:layout_constraintEnd_toEndOf="@+id/lblItemProduto" />
 
         <CheckBox
-            android:id="@+id/checkBoxMarcado"
+            android:id="@+id/chkMarcado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
