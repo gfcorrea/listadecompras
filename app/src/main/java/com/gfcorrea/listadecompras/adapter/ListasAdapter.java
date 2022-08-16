@@ -22,12 +22,12 @@ import java.util.List;
 public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewHolder> {
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyy");
-    private List<ListaModel> listaModel;
+    private List<ListaModel> listaListas;
     private ListaViewModel listaViewModel;
 
     public ListasAdapter(ListaViewModel listaViewModel) {
         this.listaViewModel = listaViewModel;
-        this.listaModel = listaViewModel.getAll();
+        this.listaListas = listaViewModel.getAll();
     }
 
     @NonNull
@@ -43,19 +43,19 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
         DecimalFormat precision = new DecimalFormat("0.00");
 
-        int id = listaModel.get(position).getId();
-        double total = listaModel.get(position).getValor_total();
+        int id = listaListas.get(position).getId();
+        double total = listaListas.get(position).getValor_total();
 
-        holder.binding.lblNomeLista.setText(listaModel.get(position).getNome());
+        holder.binding.lblNomeLista.setText(listaListas.get(position).getNome());
         holder.binding.lblTotalLista.setText("Total: R$ " + precision.format(total));
-        holder.binding.lblDateLista.setText(simpleDateFormat.format(listaModel.get(position).getData()));
+        holder.binding.lblDateLista.setText(simpleDateFormat.format(listaListas.get(position).getData()));
 
         holder.binding.buttonExcluirLista.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
                 listaViewModel.deleteByID(id);
-                listaModel.remove(position);
+                listaListas.remove(position);
 
                 notifyDataSetChanged();
                 Toast.makeText(holder.itemView.getContext(), "Excluído com sucesso", Toast.LENGTH_SHORT).show();
@@ -65,7 +65,7 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
 
     @Override
     public int getItemCount() {
-        return listaModel.size();
+        return listaListas.size();
     }
 
     public class ListaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -80,8 +80,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListaViewH
         //Implementa View.OnClickListener
         @Override
         public void onClick(View view) {
-            listaViewModel.setId(listaModel.get(getAdapterPosition()).getId());
-            listaViewModel.setNome(listaModel.get(getAdapterPosition()).getNome());
+            listaViewModel.setId(listaListas.get(getAdapterPosition()).getId());
+            listaViewModel.setNome(listaListas.get(getAdapterPosition()).getNome());
 
             Navigation.findNavController(view).navigate(R.id.navigateToItensFragment);
 
