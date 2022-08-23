@@ -15,7 +15,7 @@ A ideia é bastante simples mas é um app que abrange bastante do básico de des
 
 ## :hammer: Funcionalidades do projeto
 
-- Criar Listas Personalizadas: Você pode crias quantas listaModels quiser com quantos produtos precisar.
+- Criar Listas Personalizadas: Você pode criar quantas listas quiser com quantos produtos precisar.
 - Totalizar a Lista: Enquanto adiciona os produtos o App irá apresentar o valor total do pedido.
 - Marcar os produtos já adquiridos: Marque os produtos que você já colocou em seu carrinho.
 
